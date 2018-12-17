@@ -1988,25 +1988,25 @@ function conditional_fields_features_api() {
 }
 
 /**
-+ * Helper function to do a recursive compution of the intersection of arrays.
-+ *
-+ * @param array $arr1
-+ *   The array with master values to check.
-+ * @param array $arr2
-+ *   An array to compare values against.
-+ *
-+ * @return array
-+ *   An associative array containing all the values in $arr1 that are present
-+ *   in $arr2.
-+ */
+ * Helper function to do a recursive compution of the intersection of arrays.
+ *
+ * @param array $arr1
+ *   The array with master values to check.
+ * @param array $arr2
+ *   An array to compare values against.
+ *
+ * @return array
+ *   An associative array containing all the values in $arr1 that are present
+ *   in $arr2.
+ */
 function _conditional_fields_intersect_array(&$arr1, &$arr2) {
-	if (!is_array($arr1) || !is_array($arr2)) {
-		return (string) $arr1 == (string) $arr2;
-	}
-	$commonkeys = array_intersect(array_keys($arr1), array_keys($arr2));
-	$ret = array();
-	foreach ($commonkeys as $key) {
-		$ret[$key] = _conditional_fields_intersect_array($arr1[$key], $arr2[$key]);
-	}
-	return $ret;
+  if (!is_array($arr1) || !is_array($arr2)) {
+    return (string) $arr1 == (string) $arr2;
+  }
+  $commonkeys = array_intersect(array_keys($arr1), array_keys($arr2));
+  $ret = array();
+  foreach ($commonkeys as $key) {
+    $ret[$key] = _conditional_fields_intersect_array($arr1[$key], $arr2[$key]);
+  }
+  return $ret;
 }
