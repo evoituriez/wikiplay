@@ -199,36 +199,36 @@ function theme_term_tree_list($variables) {
  * display.
  */
 function _term_reference_tree_output_list_level(&$element, &$tree) {
-  $tree_children = (array) $tree['children']; //Added because of an error "$tree['children'] not an array or an object Countable"
-  $tree_children = count($tree_children); //Added because of an error "$tree['children'] not an array or an object Countable"
-  if (isset($tree['children']) && is_array($tree['children']) && $tree_children > 0) {
-    $output = '<ul class="term">';
-    $settings = $element['#display']['settings'];
-    $tokens_selected = $settings['token_display_selected'];
-    $tokens_unselected = ($settings['token_display_unselected'] != '') ? $settings['token_display_unselected'] : $tokens_selected;
+  if (isset($tree['children']) && is_array($tree['children'])) {
+      if(count($tree['children']) > 0){
+        $output = '<ul class="term">';
+        $settings = $element['#display']['settings'];
+        $tokens_selected = $settings['token_display_selected'];
+        $tokens_unselected = ($settings['token_display_unselected'] != '') ? $settings['token_display_unselected'] : $tokens_selected;
 
-    $taxonomy_term_info = entity_get_info('taxonomy_term');
-    foreach ($tree['children'] as &$item) {
-      $term = $taxonomy_term_info['load hook']($item['tid']);
-      $uri = $taxonomy_term_info['uri callback']($term);
-      $uri['options']['html'] = TRUE;
-      $class = $item['selected'] ? 'selected' : 'unselected';
-      $output .= "<li class='$class'>";
-      if ($tokens_selected != '' && module_exists('token')) {
-        $replace = $item['selected'] ? $tokens_selected : $tokens_unselected;
-        $output .= token_replace($replace, array('term' => $term), array('clear' => TRUE));
-      }
-      else {
-        $output .= l(filter_xss(entity_label('taxonomy_term', $term)), $uri['path'], $uri['options']);
-      }
-      if (isset($item['children'])) {
-        $output .= _term_reference_tree_output_list_level($element, $item);
-      }
-      $output .= "</li>";
-    }
+        $taxonomy_term_info = entity_get_info('taxonomy_term');
+        foreach ($tree['children'] as &$item) {
+          $term = $taxonomy_term_info['load hook']($item['tid']);
+          $uri = $taxonomy_term_info['uri callback']($term);
+          $uri['options']['html'] = TRUE;
+          $class = $item['selected'] ? 'selected' : 'unselected';
+          $output .= "<li class='$class'>";
+          if ($tokens_selected != '' && module_exists('token')) {
+            $replace = $item['selected'] ? $tokens_selected : $tokens_unselected;
+            $output .= token_replace($replace, array('term' => $term), array('clear' => TRUE));
+          }
+          else {
+            $output .= l(filter_xss(entity_label('taxonomy_term', $term)), $uri['path'], $uri['options']);
+          }
+          if (isset($item['children'])) {
+            $output .= _term_reference_tree_output_list_level($element, $item);
+          }
+          $output .= "</li>";
+        }
 
-    $output .= '</ul>';
-    return $output;
+        $output .= '</ul>';
+        return $output;
+      }
   }
 }
 
