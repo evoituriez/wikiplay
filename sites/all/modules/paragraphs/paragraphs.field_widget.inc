@@ -705,6 +705,7 @@ function paragraphs_field_widget_embed_validate($element, &$form_state, $complet
 
           // Copied from _form_validate().
           if (isset($elements['#needs_validation'])) {
+            $elements['#value'] = (array) $elements['#value'];
             $is_empty_multiple = (!count($elements['#value']));
             $is_empty_string = (is_string($elements['#value']) && drupal_strlen(trim($elements['#value'])) == 0);
             $is_empty_value = ($elements['#value'] === 0);
