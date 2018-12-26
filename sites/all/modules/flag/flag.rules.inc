@@ -313,6 +313,36 @@ function flag_rules_action_info() {
         'group' => t('Flag'),
         'access callback' => 'flag_rules_integration_access',
       ),
+      'flag_fetch_' . $type . '_flagging_by_user' => array(
+        'label' => t('Fetch flagging entity for @label flagged by user', array('@label' => $label)),
+        'base' => 'flag_rules_action_fetch_flagging_by_user',
+        'parameter' => array(
+          'flag' => array(
+            'type' => 'flag',
+            'label' => t('Flag'),
+            'flag_type' => $type,
+            'description' => t('The flag to check for.'),
+          ),
+          'flagging_user' => array(
+            'type' => 'user',
+            'label' => t('User who flagged the @label', array('@label' => $label)),
+            'description' => t('For non-global flags, this is the user who flagged the @label. (For global flags, this argument is ignored.)', array('@label' => $label)),
+          ),
+          'flagging_entity' => array(
+            'type' => $type,
+            'label' => t('Entity that was flagged.'),
+            'description' => t('')
+          )
+        ),
+        'provides' => array(
+          'flagging_by_user' => array(
+            'label' => t('Flagging for @label flagged by user', array('@label' => $label)),
+            'type' => 'flagging',
+          ),
+        ),
+        'group' => t('Flag'),
+        'access callback' => 'flag_rules_integration_access',
+      ),
       'flag_flag' . $type => array(
         'label' => t('Flag a @label', array('@label' => $label)),
         'base' => 'flag_rules_action_flag',
@@ -447,6 +477,36 @@ function flag_rules_action_fetch_entity_by_user($flag, $entity) {
   $flagged = $result->fetchCol();
   return array('content_flagged_by_user' => $flagged);
 }
+
+/**
+ * Base action implementation: Fetch flagging for an entity by a user.
+ */
+function flag_rules_action_fetch_flagging_by_user($flag, $user, $entity) {
+  $entity_id = entity_id($flag->entity_type, $entity);
+  $query = db_select('flagging', 'fc')
+    ->fields('fc', array('flagging_id'))
+    ->condition('entity_type', $flag->entity_type)
+    ->condition('fid', $flag->fid)
+    ->condition('entity_id', $entity_id);
+  // For global flags the user parameter is ignored, so we add the
+  // extra 'uid' condition when the flag is NOT global.
+  if (!$flag->global) {
+    $user = entity_metadata_wrapper('user', $user);
+    $sid = $user->flag_sid->value();
+    $query = $query->condition('uid', $user->uid->value());
+    // Filter out any bad session ids and any users that aren't anonymous.
+    if (!empty($sid) && $sid != -1) {
+      $query->condition('sid', $sid);
+    }
+  }
+  $result = $query->execute();
+  $flagging_id = $result->fetchField();
+  $flagging = flagging_load($flagging_id);
+  return array('flagging_by_user' => $flagging);
+}
+ 
+ /**
+  * Base action implementation: Fetch overall count for a particular flag.
 
 /**
  * Base action implementation: Fetch overall count for a particular flag.
