@@ -1,0 +1,119 @@
+<?php
+
+/**
+ * @file
+ * Provides settings for delimiter on multi-value fields.
+ */
+
+/**
+ * Implements hook_field_formatter_info_alter().
+ */
+function field_delimiter_field_formatter_info_alter(&$info) {
+  // Added to ALL formatters.
+  foreach ($info as $formatter_key => &$formatter) {
+    $formatter['settings']['field_delimiter'] = '';
+  }
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary_alter().
+ */
+function field_delimiter_field_formatter_settings_summary_alter(&$summary, $context) {
+
+  if (!isset($context['field']['cardinality']) || $context['field']['cardinality'] == 1) {
+    // Do nothing, not a multivalue field.
+    return;
+  }
+
+  $display = $context['instance']['display'][$context['view_mode']];
+  $settings = $display['settings'];
+
+  if (!empty($summary)) {
+    $summary .= '<br />';
+  }
+
+  $delimiter = isset($settings['field_delimiter']) ? filter_xss(
+    $settings['field_delimiter'],
+    array('br', 'hr', 'span', 'img', 'wbr')) : FALSE;
+
+  if (!empty($delimiter)) {
+    $summary .= t('Delimited by @delimiter', array('@delimiter' => $delimiter));
+  }
+  else {
+    $summary .= t('No Delimiter');
+  }
+}
+
+/**
+ * Implements hook_field_formatter_settings_form_alter().
+ */
+function field_delimiter_field_formatter_settings_form_alter(&$settings_form, $context) {
+
+  if ($context['field']['cardinality'] == 1) {
+    // Do nothing, not a multivalue field.
+    return;
+  }
+
+  $display = $context['instance']['display'][$context['view_mode']];
+  $settings = $display['settings'];
+
+  $settings_form['field_delimiter'] = array(
+    '#type' => 'textfield',
+    '#size' => 5,
+    '#title' => t('Field Delimiter'),
+    '#default_value' => filter_xss(
+      $settings['field_delimiter'],
+      array('br', 'hr', 'span', 'img', 'wbr')),
+  );
+}
+
+/**
+ * Implements hook_field_attach_view_alter().
+ *
+ * Add a delimiter after every field value.
+ */
+function field_delimiter_field_attach_view_alter(&$output, $context) {
+
+  foreach (element_children($output) as $field_name) {
+
+    if (count($output[$field_name]['#items']) < 2) {
+      // Do nothing, no need for delimiter.
+      continue;
+    }
+
+    $element = &$output[$field_name];
+
+    $delimiter = NULL;
+
+    // Try to fetch settings from context.
+    // It is needed to test if key exist, not if not empty, because user would
+    // Configure to not use delimiter (empty field).
+    if (isset($context['display']['settings']['field_delimiter'])) {
+      $delimiter = $context['display']['settings']['field_delimiter'];
+    }
+    // Context have not display settings, try field settings.
+    else {
+      $info = field_formatter_settings_get_instance_display_settings(
+        $element['#entity_type'],
+        $field_name,
+        $element['#bundle'],
+        $element['#view_mode']
+      );
+      $delimiter = !empty($info['field_delimiter']) ? $info['field_delimiter'] : NULL;
+    }
+
+    if ($delimiter) {
+      foreach ($element['#items'] as $delta => $item) {
+        if ($delta + 1 < count($element['#items'])) {
+          // Check for data under field also.
+          if (!empty($element[$delta + 1]) && !empty($element[$delta + 1]['#type'])) {
+            $element[$delta]['#suffix'] = filter_xss(
+              $delimiter,
+              array('br', 'hr', 'span', 'img', 'wbr')
+            );
+          }
+        }
+      }
+    }
+  }
+}

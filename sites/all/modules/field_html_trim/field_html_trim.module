@@ -1,0 +1,307 @@
+<?php
+
+/**
+ * @file
+ * Module that extends the settings for trimmed text fields.
+ *
+ * These extended settings allow for:
+ *   - trimming HTML without counting the HTML tags.
+ *   - adding an ellipsis where text has been cut off.
+ */
+
+/**
+ * Implements hook_field_formatter_info_alter().
+ */
+function field_html_trim_field_formatter_info_alter(&$info) {
+  // Add formatter settings for text_trimmed.
+  $info['text_trimmed']['settings']['enable_html_trim'] = FALSE;
+  $info['text_trimmed']['settings']['html_trim']['image_style'] = array();
+  $info['text_trimmed']['settings']['html_trim']['ellipsis'] = '...';
+  // Add formatter settings for text_summary_or_trimmed.
+  $info['text_summary_or_trimmed']['settings']['enable_html_trim'] = FALSE;
+  $info['text_summary_or_trimmed']['settings']['html_trim']['exclude_html_from_trim_count'] = TRUE;
+  $info['text_summary_or_trimmed']['settings']['html_trim']['ellipsis'] = '...';
+}
+
+/**
+ * Implements hook_field_formatter_settings_form_alter().
+ */
+function field_html_trim_field_formatter_settings_form_alter(&$settings_form, $context) {
+  $display = $context['instance']['display'][$context['view_mode']];
+  $settings = $display['settings'];
+
+  // Normalize the settings.
+  $settings['enable_html_trim'] = isset($settings['enable_html_trim']) ? $settings['enable_html_trim'] : FALSE;
+  $settings['html_trim']['exclude_html_from_trim_count'] = isset($settings['html_trim']['exclude_html_from_trim_count']) ? $settings['html_trim']['exclude_html_from_trim_count'] : TRUE;
+  $settings['html_trim']['ellipsis'] = isset($settings['html_trim']['ellipsis']) ? $settings['html_trim']['ellipsis'] : '...';
+
+  if (in_array($display['type'], array('text_trimmed', 'text_summary_or_trimmed'))) {
+    // The enable checkbox for html trimming.
+    $settings_form['enable_html_trim'] = array(
+      '#title' => t('Enable HTML trim'),
+      '#type' => 'checkbox',
+      '#default_value' => $settings['enable_html_trim'],
+      '#attached' => array(
+        'js' => array(drupal_get_path('module', 'field_html_trim') . '/field_html_trim.js'),
+      ),
+      '#attributes' => array(
+        'class' => array('html-trim-checkbox'),
+      ),
+    );
+    // Fieldset with html trim settings(dynamically shown and hidden).
+    $settings_form['html_trim'] = array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array('html-trim-fieldset'),
+      ),
+    );
+    // Exlude HTML tag count checkbox. By default enabled.
+    $settings_form['html_trim']['exclude_html_from_trim_count'] = array(
+      '#title' => t('Exlude HTML tags from trim count'),
+      '#type' => 'checkbox',
+      '#default_value' => $settings['html_trim']['exclude_html_from_trim_count'],
+    );
+    // Cut off at level (character or word)
+    $settings_form['html_trim']['exact'] = array(
+      '#title' => t('Exact cut-off'),
+      '#description' => t('If checked string will be cut at character level, otherwise at word level.'),
+      '#type' => 'checkbox',
+      '#default_value' => $settings['html_trim']['exact'],
+    );
+    // Ellipsis textfield. By default '...'.
+    $settings_form['html_trim']['ellipsis'] = array(
+      '#title' => t('Ellipsis to indicate text cut-off'),
+      '#description' => t('Ellipsis character length will be included in trim length.'),
+      '#type' => 'textfield',
+      '#default_value' => $settings['html_trim']['ellipsis'],
+      '#size' => 4,
+    );
+  }
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary_alter().
+ */
+function field_html_trim_field_formatter_settings_summary_alter(&$summary, $context) {
+  $display = $context['instance']['display'][$context['view_mode']];
+  $settings = $display['settings'];
+
+  // Normalize the settings.
+  $settings['enable_html_trim'] = isset($settings['enable_html_trim']) ? $settings['enable_html_trim'] : FALSE;
+  $settings['html_trim']['exclude_html_from_trim_count'] = isset($settings['html_trim']['exclude_html_from_trim_count']) ? $settings['html_trim']['exclude_html_from_trim_count'] : TRUE;
+  $settings['html_trim']['ellipsis'] = isset($settings['html_trim']['ellipsis']) ? $settings['html_trim']['ellipsis'] : '...';
+  $settings['html_trim']['exact'] = isset($settings['html_trim']['exact']) ? $settings['html_trim']['exact'] : TRUE;
+
+  if (in_array($display['type'], array('text_trimmed', 'text_summary_or_trimmed'))) {
+    if ($settings['enable_html_trim']) {
+      if ($settings['html_trim']['exclude_html_from_trim_count']) {
+        $summary .= '<br />' . t('HTML tags exluded from trim count');
+      }
+      $summary .= $settings['html_trim']['exact'] ? '<br />' . t('Cuts of at character level') : '<br />' . t('Cuts of at word level');
+      if (!empty($settings['html_trim']['ellipsis'])) {
+        $summary .= '<br />' . t('Append ellipsis: @ellipsis', array('@ellipsis' => $settings['html_trim']['ellipsis']));
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_attach_view_alter().
+ */
+function field_html_trim_field_attach_view_alter(&$output, $context) {
+  foreach (element_children($output) as $field_name) {
+    if (in_array($output[$field_name]['#formatter'], array('text_trimmed', 'text_summary_or_trimmed'))) {
+      $element = &$output[$field_name];
+      $instance = field_info_instance($element['#entity_type'], $field_name, $element['#bundle']);
+      $display = isset($instance['display'][$context['view_mode']]) ? $instance['display'][$context['view_mode']] : $instance['display']['default'];
+      // If there are display settings for view fields use those instead.
+      $settings = (is_array($context['display']) && is_array($context['display']['settings'])) ? $context['display']['settings'] : $display['settings'];
+
+      // Normalize the settings.
+      $settings['enable_html_trim'] = isset($settings['enable_html_trim']) ? $settings['enable_html_trim'] : FALSE;
+      $settings['html_trim']['exclude_html_from_trim_count'] = isset($settings['html_trim']['exclude_html_from_trim_count']) ? $settings['html_trim']['exclude_html_from_trim_count'] : TRUE;
+      $settings['html_trim']['ellipsis'] = isset($settings['html_trim']['ellipsis']) ? $settings['html_trim']['ellipsis'] : '...';
+
+      // Only proceed if html trim is enabled.
+      if (!$settings['enable_html_trim']) {
+        continue;
+      }
+
+      switch ($element['#formatter']) {
+        case 'text_trimmed':
+          foreach ($element['#items'] as $delta => $item) {
+            if (!empty($settings['html_trim']['exclude_html_from_trim_count'])) {
+              $safe_value = _text_sanitize($instance, $element['#language'], $item, 'value');
+              $element[$delta]['#markup'] = _field_html_trim_get_trimmed_html($safe_value, $settings['trim_length'], $settings['html_trim']['ellipsis'], $settings['html_trim']['exact']);
+            }
+          }
+          break;
+
+        case 'text_summary_or_trimmed';
+          foreach ($element['#items'] as $delta => $item) {
+            // Only perform the actual trimming when no summary is used.
+            if (!empty($settings['html_trim']['exclude_html_from_trim_count']) && empty($item['summary'])) {
+              $safe_value = _text_sanitize($instance, $element['#language'], $item, 'value');
+              $element[$delta]['#markup'] = _field_html_trim_get_trimmed_html($safe_value, $settings['trim_length'], $settings['html_trim']['ellipsis'], $settings['html_trim']['exact']);
+            }
+          }
+          break;
+      }
+    }
+  }
+}
+
+/**
+ * Returns trimmed HTML without counting HTML tags.
+ *
+ * @param string $safe_value
+ *   The field's safe value to trim.
+ * @param int $trim_length
+ *   The length in characters to trim the value.
+ * @param string $ellipsis
+ *   The ellipsis to append after trimmed value.
+ */
+function _field_html_trim_get_trimmed_html($safe_value, $trim_length, $ellipsis, $exact) {
+
+  // Variable for breakpoint checking.
+  $breakpoint = strpos($safe_value, '<!--break-->');
+
+  // If a breakpoint is defined...
+  if ($breakpoint !== FALSE) {
+    // Cut off the unwanted piece.
+    $safe_value = strstr($safe_value, '<!--break-->', TRUE);
+    // Put ellipsis inside of ending html tags.
+    $safe_value = preg_replace('#^(.*)(\s?)(</[^>]+>)$#Us', '$1' . $ellipsis . '$3', $safe_value);
+    // Return corrected output.
+    return _filter_htmlcorrector($safe_value);
+  }
+
+  $safe_value = field_html_trim_truncate($safe_value, $trim_length, array('ellipsis' => $ellipsis, 'exact' => $exact));
+
+  return $safe_value;
+}
+
+/**
+ * Truncates text.
+ *
+ * Cuts a string to the length of $length and replaces the last characters
+ * with the ellipsis if the text is longer than length.
+ *
+ * ### Options:
+ *
+ * - `ellipsis` Will be used as ending and appended to the trimmed string
+ * - `exact` If FALSE, $text will not be cut mid-word
+ * - `html` If TRUE, HTML tags would be handled correctly
+ *
+ * @param string $text String to truncate.
+ * @param int $length Length of returned string, including ellipsis.
+ * @param array $options An array of HTML attributes and options.
+ * @return string Trimmed string.
+ * @link http://book.cakephp.org/3.0/en/core-libraries/string.html#truncating-text
+ */
+function field_html_trim_truncate($text, $length = 100, array $options = array()) {
+  $default = array(
+      'ellipsis' => '...', 'exact' => TRUE, 'html' => TRUE
+  );
+  if (!empty($options['html']) && drupal_strtolower(mb_internal_encoding()) === 'utf-8') {
+      $default['ellipsis'] = "\xe2\x80\xa6";
+  }
+  $options += $default;
+  extract($options);
+  $text = trim(preg_replace('/\s\s+/', ' ', $text));
+  if ($html) {
+    if (drupal_strlen(preg_replace('/<.*?>/', '', $text)) <= $length) {
+        return $text;
+    }
+    $totalLength = drupal_strlen(strip_tags($ellipsis));
+    $openTags = array();
+    $truncate = '';
+    preg_match_all('/(<\/?([\w+]+)[^>]*>)?([^<>]*)/', $text, $tags, PREG_SET_ORDER);
+    foreach ($tags as $tag) {
+      if (!preg_match('/img|br|input|hr|area|base|basefont|col|frame|isindex|link|meta|param/s', $tag[2])) {
+        if (preg_match('/<[\w]+[^>]*>/s', $tag[0])) {
+          array_unshift($openTags, $tag[2]);
+        }
+        elseif (preg_match('/<\/([\w]+)[^>]*>/s', $tag[0], $closeTag)) {
+          $pos = array_search($closeTag[1], $openTags);
+          if ($pos !== FALSE) {
+            array_splice($openTags, $pos, 1);
+          }
+        }
+      }
+      $truncate .= $tag[1];
+      $contentLength = drupal_strlen(preg_replace('/&[0-9a-z]{2,8};|&#[0-9]{1,7};|&#x[0-9a-f]{1,6};/i', ' ', $tag[3]));
+      if ($contentLength + $totalLength > $length) {
+        $left = $length - $totalLength;
+        $entitiesLength = 0;
+        if (preg_match_all('/&[0-9a-z]{2,8};|&#[0-9]{1,7};|&#x[0-9a-f]{1,6};/i', $tag[3], $entities, PREG_OFFSET_CAPTURE)) {
+          foreach ($entities[0] as $entity) {
+            if ($entity[1] + 1 - $entitiesLength <= $left) {
+              $left--;
+              $entitiesLength += drupal_strlen($entity[0]);
+            }
+            else {
+              break;
+            }
+          }
+        }
+        $truncate .= drupal_substr($tag[3], 0, $left + $entitiesLength);
+        break;
+      }
+      else {
+        $truncate .= $tag[3];
+        $totalLength += $contentLength;
+      }
+      if ($totalLength >= $length) {
+        break;
+      }
+    }
+  }
+  else {
+    if (drupal_strlen($text) <= $length) {
+      return $text;
+    }
+    $truncate = drupal_substr($text, 0, $length - drupal_strlen($ellipsis));
+  }
+  if (!$exact) {
+    $spacepos = mb_strrpos($truncate, ' ');
+    if ($html) {
+      $truncateCheck = drupal_substr($truncate, 0, $spacepos);
+      $lastOpenTag = mb_strrpos($truncateCheck, '<');
+      $lastCloseTag = mb_strrpos($truncateCheck, '>');
+      if ($lastOpenTag > $lastCloseTag) {
+        preg_match_all('/<[\w]+[^>]*>/s', $truncate, $lastTagMatches);
+        $lastTag = array_pop($lastTagMatches[0]);
+        $spacepos = mb_strrpos($truncate, $lastTag) + drupal_strlen($lastTag);
+      }
+      $bits = drupal_substr($truncate, $spacepos);
+      preg_match_all('/<\/([a-z]+)>/', $bits, $droppedTags, PREG_SET_ORDER);
+      if (!empty($droppedTags)) {
+        if (!empty($openTags)) {
+          foreach ($droppedTags as $closingTag) {
+            if (!in_array($closingTag[1], $openTags)) {
+              array_unshift($openTags, $closingTag[1]);
+            }
+          }
+        }
+        else {
+          foreach ($droppedTags as $closingTag) {
+            $openTags[] = $closingTag[1];
+          }
+        }
+      }
+    }
+    $truncate = drupal_substr($truncate, 0, $spacepos);
+    // If truncate still empty, then we don't need to count ellipsis in the cut.
+    if (drupal_strlen($truncate) === 0) {
+        $truncate = drupal_substr($text, 0, $length);
+    }
+  }
+  $truncate .= $ellipsis;
+  if ($html) {
+    foreach ($openTags as $tag) {
+      $truncate .= '</' . $tag . '>';
+    }
+  }
+  return $truncate;
+}

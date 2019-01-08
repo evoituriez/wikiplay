@@ -1,0 +1,108 @@
+<?php
+
+/**
+ * @file
+ * Field Delimiter install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function field_delimiter_install() {
+  // Set module weight for it to run after most modules.
+  _field_delimiter_update_weight();
+}
+
+/**
+ * Helper Function to update weight.
+ */
+function _field_delimiter_update_weight($weight = 10) {
+  db_update('system')
+    ->fields(array('weight' => 10))
+    ->condition('name', 'field_delimiter', '=')
+    ->execute();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function field_delimiter_uninstall() {
+  $field_info = field_info_fields();
+
+  foreach ($field_info as $field) {
+    foreach ($field['bundles'] as $entity_type => $bundles) {
+      foreach ($bundles as $bundle) {
+
+        // Get the instance settings from the database.
+        $instance = db_select('field_config_instance', 'fci')
+          ->fields('fci', array('data'))
+          ->condition('field_name', $field['field_name'])
+          ->condition('entity_type', $entity_type)
+          ->condition('bundle', $bundle)
+          ->execute()
+          ->fetchField();
+
+        $instance = unserialize($instance);
+
+        // Remove the display settings provided by this module.
+        foreach ($instance['display'] as &$display) {
+          if (isset($display['settings']['field_delimiter'])) {
+            unset($display['settings']['field_delimiter']);
+          }
+        }
+
+        // Re-serialize the instance, then save back to the database.
+        $instance = serialize($instance);
+        db_update('field_config_instance')
+          ->fields(array('data' => $instance))
+          ->condition('field_name', $field['field_name'])
+          ->condition('entity_type', $entity_type)
+          ->condition('bundle', $bundle)
+          ->execute();
+      }
+    }
+  }
+  field_cache_clear();
+
+  // Views displays.
+  if (db_table_exists('views_display')) {
+    // Getting all view displays from database.
+    $view_displays = db_select('views_display', 'vd')
+      ->fields('vd')
+      ->execute();
+
+    // Iterate all view displays and modify them.
+    foreach ($view_displays as $view_display) {
+      $vid = $view_display->vid;
+      $id = $view_display->id;
+
+      $display_options = unserialize($view_display->display_options);
+
+      // Remove the display settings provided by this module.
+      if (isset($display_options['fields'])) {
+        foreach ($display_options['fields'] as &$field) {
+          $settings = &$field['settings'];
+          if (isset($settings['field_delimiter'])) {
+            unset($settings['field_delimiter']);
+          }
+        }
+      }
+
+      $display_options = serialize($display_options);
+
+      // Finally we update the current view display.
+      db_update('views_display')
+        ->fields(array('display_options' => $display_options))
+        ->condition('vid', $vid)
+        ->condition('id', $id)
+        ->execute();
+    }
+  }
+}
+
+/**
+ * Set weight of the Field Delimiter module to 10.
+ */
+function field_delimiter_update_7001() {
+  _field_delimiter_update_weight();
+}
