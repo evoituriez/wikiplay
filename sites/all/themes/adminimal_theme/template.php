@@ -327,7 +327,8 @@ function adminimal_table($variables) {
   $empty = $variables['empty'];
 
   // Add sticky headers, if applicable.
-  if (count($header) && $sticky) {
+  $array_header = (array) $header;
+  if (count($array_header) && $sticky) {
     drupal_add_js('misc/tableheader.js');
     // Add 'sticky-enabled' class to the table to identify it for JS.
     // This is needed to target tables constructed by this function.
@@ -395,7 +396,7 @@ function adminimal_table($variables) {
   }
 
   // Format the table header:
-  if (count($header)) {
+  if (count($array_header)) {
     $ts = tablesort_init($header);
     // HTML requires that the thead tag has tr tags in it followed by tbody
     // tags. Using ternary operator to check and see if we have any rows.
