@@ -1,21 +1,12 @@
-name = 'Wikiplay theme'
-description = ''
-core = '7.x'
-engine = 'phptemplate'
-screenshot = 'screenshot.png'
-base theme = 'omega'
-version = '1.x'
-regions[page_top] = 'Page Top'
-regions[page_bottom] = 'Page Bottom'
-regions[content] = 'Content'
-regions[branding] = 'Branding'
-regions[header] = 'Header'
-regions[navigation] = 'Navigation'
-regions[highlighted] = 'Highlighted'
-regions[help] = 'Help'
-regions[sidebar_first] = 'First Sidebar'
-regions[sidebar_second] = 'Second Sidebar'
-regions[footer] = 'Footer'
-zones[header] = 'Header'
-zones[content] = 'Content'
-zones[footer] = 'Footer'
+name = wikiplay_theme
+description = Dedicated theme from Omega
+screenshot = screenshot.png
+engine = phptemplate
+core = 7.x
+
+; Styles
+stylesheets[all][] = css/wikiplay_theme.reset.css
+stylesheets[all][] = css/wikiplay_theme.styles.css
+
+; Scripts
+scripts[] = js/wikiplay_theme.behaviors.js

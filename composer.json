@@ -1,0 +1,6 @@
+{
+    "require-dev": {
+        "dshafik/php7-mysql-shim": "^0.2.0",
+        "bbrala/php7-ereg-shim": "^1.0"
+    }
+}

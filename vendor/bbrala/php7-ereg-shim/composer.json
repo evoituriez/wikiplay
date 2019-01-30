@@ -1,0 +1,18 @@
+{
+    "name": "bbrala/php7-ereg-shim",
+    "description": "Shim for ereg functions",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Björn Brala",
+            "email": "github@bjornbrala.com",
+            "homepage": "http://bjornbrala.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "files": ["lib/ereg.php"]
+    }
+}
