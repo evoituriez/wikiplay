@@ -1,10 +1,8 @@
-name = Delta API
-description = The Delta module is an advanced manipulation of the Theme Settings API to allow for customization/configuration of theme settings based on node types, context, or groups of paths.
-package = Theme Tools
+name = Delta Blocks
+description = Exposes a number of core Drupal elements as blocks.
 core = 7.x
 version = 7.x-3.x-dev
-
-dependencies[] = ctools
+package = Theme Tools
 
 
 ; Information added by drupal.org packaging script on 2011-11-12

@@ -13,12 +13,16 @@
 Project Page:   http://drupal.org/project/delta
 Issue Queue:    http://drupal.org/project/issues/delta
 Usage Stats:    http://drupal.org/project/usage/delta
-Maintainer(s):  Jake Strawn 
-                http://himerus.com
-                http://developmentgeeks.com
-                http://facebook.com/developmentgeeks
-                http://drupal.org/user/159141
-                http://twitter.com/himerus
+Maintainer(s):  
+                Jake Strawn 
+                  http://himerus.com
+                  http://developmentgeeks.com
+                  http://facebook.com/developmentgeeks
+                  http://drupal.org/user/159141
+                  http://twitter.com/himerus
+                Sebastian Siemssen
+                  http://twitter.com/thefubhy
+                  http://drupal.org/user/761344
 ##########################################################################################
 
 Delta Module Information

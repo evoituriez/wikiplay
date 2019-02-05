@@ -1,2 +1,90 @@
 /* This file will hold styles for the mobile version of your website (mobile first). */
-/* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
+
+/* GLOBAL */
+
+body {
+	width: 100%;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: 5px;
+  -moz-box-sizing: 5px;
+  box-sizing: 5px;
+}
+
+#section-header {
+	width: 1200px;
+	margin: auto;
+}
+
+#section-content {
+	width: 100%;
+}
+
+#section-footer {
+	width: 1200px;
+	margin: auto;
+}
+
+#zone-pre-header-wrapper {
+	width: 100%;
+}
+
+#zone-header-wrapper {
+	width: 100%;
+}
+
+
+
+[class*='grid-'] {
+  float: left;
+  margin: 0;
+}
+
+.grid-1 {
+  width: calc(100% / 12);
+}
+
+.grid-2 {
+  width: calc(100% / 12 * 2);
+}
+
+.grid-3 {
+  width: calc(100% / 12 * 3);
+}
+
+.grid-4 {
+  width: calc(100% / 12 * 4);
+}
+
+.grid-5 {
+  width: calc(100% / 12 * 5);
+}
+
+.grid-6 {
+  width: calc(100% / 12 * 6);
+}
+
+.grid-7 {
+  width: calc(100% / 12 * 7);
+}
+
+.grid-8 {
+  width: calc(100% / 12 * 8);
+}
+
+.grid-9 {
+  width: calc(100% / 12 * 9);
+}
+
+.grid-10 {
+  width: calc(100% / 12 * 10);
+}
+
+.grid-11 {
+  width: calc(100% / 12 * 11);
+}
+
+.grid-12 {
+  width: 100%;
+}
