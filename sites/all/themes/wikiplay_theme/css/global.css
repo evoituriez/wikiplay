@@ -7,6 +7,31 @@ body {
 	margin: 0;
 }
 
+ul li.leaf {
+	list-style: none;
+}
+
+input[type='text'] {
+	margin: 0;
+	padding: 10px 10px;
+	box-shadow: none;
+	border-bottom: 1px solid black;
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	border-radius: 0;
+}
+
+input[type='text']:focus {
+	box-shadow: none;
+	border-bottom: 2px solid #4FAD26;
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	border-radius: 0;
+
+}
+
 /* HEADER */
 
 #zone-pre-header-wrapper {
@@ -30,6 +55,7 @@ body {
 
 #zone-header-wrapper {
 	width: 1200px;
+	height: 100px;
 	margin: auto;
 }
 
@@ -39,25 +65,24 @@ body {
 }
 
 #region-logo {
-	width: 25%;
-	height: 70px;
-	padding: 10px 0 0 0;
+	width: 20%;
+	padding: 20px 0 0 0;
 }
 
 #region-logo .logo-img img {
-	height: 70px;
+	height: 63px;
 	width: auto;
 }
 
 #region-main-menu {
-	width: 65%;
+	width: 60%;
 	margin: 0;
 }
 
 #region-main-menu ul {
 	position: relative;
 	margin: 0;
-	padding: 20px 0 0 0;
+	padding: 50px 0 0 0;
 }
 
 #region-main-menu li {
@@ -72,22 +97,48 @@ body {
 	display: block;
 	color: black;
 	text-align: center;
-	padding: 24px 0 10px 0;
-	margin: 0 20px;
+	padding: 0 0 10px 0;
+	margin: 0 10px;
 	text-decoration: none;
 	font-size: 1rem;
 }
 
 li a:hover {
-	border-bottom: 4px solid black;
+	border-bottom: 4px solid #4FAD26;
 }
 
 #region-search {
-	width: 5%;
+	width: 15%;
+	padding: 45px 0 0 0;
 }
+
+#region-search #block-search-form #search-block-form input[type='text'] {
+	width: 70%;
+	height: 25px;
+}
+
+#region-search #block-search-form .form-actions {
+	height: 30px;
+	background-image: url('../img/magnifying-glass.svg');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	padding-bottom: 5px;
+}
+
+#region-search #block-search-form #search-block-form input[type='submit'] {
+	width: 20%;
+	height: 30px;
+	opacity: 0;
+}
+
 
 #region-account {
 	width: 5%;
+	display: none;
+}
+
+#region-account #block-user-menu a {
+	display: none;
 }
 
 
