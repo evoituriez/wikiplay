@@ -103,7 +103,7 @@ input[type='text']:focus {
 	font-size: 1rem;
 }
 
-li a:hover {
+#region-main-menu li a:hover {
 	border-bottom: 4px solid #4FAD26;
 }
 
@@ -119,7 +119,7 @@ li a:hover {
 
 #region-search #block-search-form .form-actions {
 	height: 30px;
-	background-image: url('../img/magnifying-glass.svg');
+	background-image: url('../img/search-icon.svg');
 	background-repeat: no-repeat;
 	background-size: 20px 20px;
 	padding-bottom: 5px;
@@ -134,11 +134,18 @@ li a:hover {
 
 #region-account {
 	width: 5%;
-	display: none;
+	padding: 45px 0 0 0;
 }
 
-#region-account #block-user-menu a {
-	display: none;
+#region-account #block-system-user-menu {
+    height: 30px;
+    background-image: url('../img/account-icon.svg');
+	background-repeat: no-repeat;
+	background-size: 30px 30px;
+}
+
+#region-account #block-system-user-menu ul li a {
+    opacity: 0;
 }
 
 
