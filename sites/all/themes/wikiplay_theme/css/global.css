@@ -1,16 +1,29 @@
-/* This file will hold styles for the mobile version of your website (mobile first). */
+/* 
+
+This file will hold styles for the mobile version of your website (mobile first). 
+
+Variables :
+
+colors: 
+Green base : #4FAD26
+Green hover : #2a7a07
+
+*/
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DESKTOP 1600px !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-
 
 
 /*---------------------------------------- GLOBAL ----------------------------------------*/
 
 body {
-	font-family: sans-serif;
+    font-family: "Open Sans Regular", Verdana, sans-serif;
     width: 100%;
 	margin: 0;
     overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, div, p, span {
+    font-family: "Open Sans", Verdana, sans-serif;
 }
 
 body #page {
@@ -43,7 +56,8 @@ input[type='text']:focus {
 
 }
 
-input[type='submit'] {
+input[type='submit'],
+p.button {
     background: #4FAD26;
     color: #fff;
     text-shadow: none;
@@ -54,8 +68,15 @@ input[type='submit'] {
     transition: all 0.5s;
 }
 
-input[type='submit']:hover {
+input[type='submit']:hover,
+p.button:hover {
     background: #2a7a07;
+}
+
+p.button a:link,
+p.button a:visited {
+    color: #fff;
+    text-decoration: none;
 }
 
 /*---------------------------------------- HEADER ----------------------------------------*/
@@ -232,8 +253,9 @@ input[type='submit']:hover {
 
 #zone-highlight #region-highlight #block-views-highlight-slider-hp-block .titles-block h2 {
     color: #4FAD26;
-    font-size: 2rem;
-    font-style: oblique;
+    font-size: 2.5rem;
+    font-weight: 200;
+    font-style: italic;
     margin-bottom: 30px;
 }
 
@@ -285,6 +307,93 @@ input[type='submit']:hover {
 
 #zone-highlight #region-highlight #block-views-highlight-slider-hp-block .owl-controls .owl-pagination .owl-page.active span {
     background-color: #4FAD26;
+}
+
+#zone-hp-first {
+    width: 1200px;
+    margin: auto;
+}
+
+#region-hp-first {
+    margin: auto;
+    width: 1100px;
+}
+
+#zone-hp-first #region-hp-first h2.block-title {
+    font-size: 2rem;
+    text-align: center;
+    margin: 30px 0 60px 0;
+}
+
+#zone-hp-first #region-hp-first h2.block-title::after {
+    content:'';
+    position:absolute;
+    width:100px;
+    height:4px;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background:#4FAD26;
+    margin:auto;
+}
+
+#zone-hp-first #block-views-how-it-works-hp-block .owl-wrapper-outer {
+    margin: 10px 0 ;
+}
+
+#zone-hp-first #block-views-how-it-works-hp-block .owl-item {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+#zone-hp-first #block-views-how-it-works-hp-block .owl-item .vocabulary-jeu-tele-associe {
+    width: 220px;
+    margin: auto;
+}
+
+#zone-hp-first #block-views-how-it-works-hp-block .owl-item .vocabulary-jeu-tele-associe img {
+    width: 220px;
+    height: 220px;
+}
+
+#zone-hp-first #block-views-how-it-works-hp-block .owl-item .vocabulary-jeu-tele-associe h3 {
+    width: 220px;
+    text-align: center;
+    font-size: 1rem;
+    margin: 10px auto;
+}
+
+#zone-hp-first #block-views-how-it-works-hp-block .owl-buttons {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+}
+
+#zone-hp-first #block-views-how-it-works-hp-block .owl-buttons .owl-prev,
+#zone-hp-first #block-views-how-it-works-hp-block .owl-buttons .owl-next {
+    margin: 0;
+    background: transparent;
+    color: transparent;
+    opacity: 1;
+    width: 50px;
+    height: 50px;
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+}
+
+#zone-hp-first #block-views-how-it-works-hp-block .owl-buttons .owl-prev {
+    float: left;
+    margin-left: -50px;
+    background-image: url('../img/arrow-slider-left.svg');
+    background-position: left;
+}
+
+#zone-hp-first #block-views-how-it-works-hp-block .owl-buttons .owl-next {
+    float: right;
+    margin-right: -50px;
+    background-image: url('../img/arrow-slider-right.svg');
+    background-position: right;
 }
 
 /*######################################## OTHER CONTENTS ########################################*/
