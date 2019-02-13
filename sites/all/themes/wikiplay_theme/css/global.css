@@ -53,19 +53,20 @@ input[type='text']:focus {
 	border-right: none;
 	border-top: none;
 	border-radius: 0;
-
 }
 
 input[type='submit'],
 p.button {
     background: #4FAD26;
     color: #fff;
+    text-align: center;
     text-shadow: none;
     text-transform: uppercase;
     border: none;
     padding: 10px 20px;
     border-radius: 50px;
     transition: all 0.5s;
+    margin: 0 0 20px 0;
 }
 
 input[type='submit']:hover,
@@ -352,21 +353,45 @@ p.button a:visited {
     margin: auto;
 }
 
+#zone-hp-first #block-views-how-it-works-hp-block .owl-item .item-group {
+    margin-bottom: 30px;
+}
+
 #zone-hp-first #block-views-how-it-works-hp-block .owl-item .vocabulary-jeu-tele-associe img {
     width: 220px;
     height: 220px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+#zone-hp-first #block-views-how-it-works-hp-block .owl-item .vocabulary-jeu-tele-associe div.title {
+    width: 220px;
+    height: 80px;
+    background-color: #EFEFEF;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top: 2px solid #4FAD26
 }
 
 #zone-hp-first #block-views-how-it-works-hp-block .owl-item .vocabulary-jeu-tele-associe h3 {
-    width: 220px;
-    text-align: center;
     font-size: 1rem;
-    margin: 10px auto;
+    padding: 0 20px;
+    margin: 0;
 }
 
 #zone-hp-first #block-views-how-it-works-hp-block .owl-buttons {
     position: absolute;
-    top: 30%;
+    top: 35%;
     width: 100%;
 }
 
@@ -394,6 +419,11 @@ p.button a:visited {
     margin-right: -50px;
     background-image: url('../img/arrow-slider-right.svg');
     background-position: right;
+}
+
+#zone-hp-first #block-views-how-it-works-hp-block p.button {
+    width: 160px;
+    margin: 0 auto 20px auto;
 }
 
 /*######################################## OTHER CONTENTS ########################################*/
