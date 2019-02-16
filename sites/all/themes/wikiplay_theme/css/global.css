@@ -7,6 +7,7 @@ Variables :
 colors: 
 Green base : #4FAD26
 Green hover : #2a7a07
+Grey : #EFEFEF
 
 */
 
@@ -26,6 +27,10 @@ h1, h2, h3, h4, h5, h6, div, p, span {
     font-family: "Open Sans", Verdana, sans-serif;
 }
 
+p {
+    font-size: 0.9rem;
+}
+
 body #page {
     max-width: 1600px;
     margin: auto;
@@ -35,7 +40,29 @@ ul li.leaf {
 	list-style: none;
 }
 
-input[type='text'] {
+p.button a:link,
+p.button a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+p.button:hover {
+    background: #2a7a07;
+}
+
+
+/*######################################## FORMS ########################################*/
+
+form label {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #4FAD26;
+    width: 150px;
+}
+
+input[type='text'],
+input[type='password'] {
 	margin: 0;
 	padding: 10px 10px;
 	box-shadow: none;
@@ -46,13 +73,20 @@ input[type='text'] {
 	border-radius: 0;
 }
 
-input[type='text']:focus {
+input[type='text']:focus,
+input[type='password']:focus {
 	box-shadow: none;
 	border-bottom: 2px solid #4FAD26;
 	border-left: none;
 	border-right: none;
 	border-top: none;
 	border-radius: 0;
+}
+
+input[type='text'],
+input[type='password'] {
+	width: 120px;
+	height: 25px;
 }
 
 input[type='submit'],
@@ -69,16 +103,12 @@ p.button {
     margin: 0 0 20px 0;
 }
 
-input[type='submit']:hover,
-p.button:hover {
+input[type='submit']:hover {
     background: #2a7a07;
 }
 
-p.button a:link,
-p.button a:visited {
-    color: #fff;
-    text-decoration: none;
-}
+
+
 
 /*---------------------------------------- HEADER ----------------------------------------*/
 
@@ -218,6 +248,24 @@ p.button a:visited {
 
 /*######################################## HOME PAGE ########################################*/
 
+.front h2.block-title {
+    font-size: 2rem;
+    text-align: center;
+    margin: 30px 0 60px 0;
+}
+
+.front #section-content h2.block-title::after {
+    content:'';
+    position:absolute;
+    width:100px;
+    height:4px;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background:#4FAD26;
+    margin:auto;
+}
+
 #zone-highlight {
     width: 100%;
     margin: 0;
@@ -320,24 +368,6 @@ p.button a:visited {
     width: 1100px;
 }
 
-#zone-hp-first #region-hp-first h2.block-title {
-    font-size: 2rem;
-    text-align: center;
-    margin: 30px 0 60px 0;
-}
-
-#zone-hp-first #region-hp-first h2.block-title::after {
-    content:'';
-    position:absolute;
-    width:100px;
-    height:4px;
-    top: 60px;
-    left: 0;
-    right: 0;
-    background:#4FAD26;
-    margin:auto;
-}
-
 #zone-hp-first #block-views-how-it-works-hp-block .owl-wrapper-outer {
     margin: 10px 0 ;
 }
@@ -422,8 +452,29 @@ p.button a:visited {
 }
 
 #zone-hp-first #block-views-how-it-works-hp-block p.button {
-    width: 160px;
+    width: 180px;
     margin: 0 auto 20px auto;
+}
+
+#zone-hp-second {
+    background-color: #EFEFEF;
+    padding: 40px 0 40px 0;
+}
+
+#region-hp-second {
+    width: 1200px;
+    margin: auto;
+}
+
+#region-hp-second .content {
+    width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+#region-hp-second .content p.button {
+    width: 160px;
+    margin: 40px auto;
 }
 
 /*######################################## OTHER CONTENTS ########################################*/
@@ -484,17 +535,46 @@ p.button a:visited {
 }
 
 
+/*######################################## PAGE USER LOGIN ########################################*/
+
+
+
+.page-user-login div.tabs.clearfix,
+.page-user-login form#user-login {
+    width: 50%;
+    margin: 0;
+    height: 400px;
+}
+
+.page-user-login div.tabs.clearfix {
+    float: right;
+}
+
+.page-user-login form#user-login {
+    float: left;
+}
+
+.page-user-login ul.tabs.clearfix {
+    float: left;
+}
+
+.page-user-login ul.primary {
+
+}
+
+
+
 
 /*---------------------------------------- FOOTER ----------------------------------------*/
 
 #section-footer {
-	width: 1200px;
-	margin: auto;
+    background: rgba(79, 173, 38, 1);
 }
 
-#zone-footer-wrapper {
+#section-footer #zone-footer-wrapper {
 	width: 1200px;
 	margin: auto;
+    padding: 40px 0;
 }
 
 #zone-footer-wrapper #zone-footer>div {
@@ -502,23 +582,93 @@ p.button a:visited {
 	margin: 0;
 }
 
+#zone-footer-wrapper #zone-footer h2.block-title {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+#zone-footer-wrapper #zone-footer h2.block-title::after {
+    content:'';
+    position:absolute;
+    width:100px;
+    height:2px;
+    top: 40px;
+    left: 0;
+    right: 0;
+    background:#fff;
+    margin:auto;
+}
+
+#zone-footer ul {
+    padding: 30px 0 0 50px;
+}
+
+#zone-footer ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
 #region-footer-first {
 	width: 50%;
 }
 
+
 #region-footer-second {
-	width: 50%;
+	width: 49%;
+    border-left: 1px solid #fff;
 }
 
 #zone-secondary-footer-wrapper {
+	width: 100%;
+	background-color: #fff;
+    padding: 10px 0 0 0;
+}
+
+#region-secondary-footer {
 	width: 1200px;
 	margin: auto;
 }
 
-#region-secondary-footer {
-	width: 100%;
-	margin: auto;
+#region-secondary-footer ul {
+	margin: 0;
 }
+
+##region-secondary-footer li {
+}
+
+#region-secondary-footer li.leaf {
+	list-style: none;
+    display: inline-block;
+}
+
+#region-secondary-footer li a {
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 0 0 10px 0;
+	margin: 0 10px;
+	text-decoration: none;
+	font-size: 0.8rem;
+}
+
+#region-secondary-footer ul.menu li.first {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+#region-secondary-footer ul.menu li.first a {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+#region-secondary-footer ul.menu li.last {
+    float: right;
+}
+
+
 
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! RESPONSIVE DESIGN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
