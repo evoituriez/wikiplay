@@ -40,14 +40,27 @@ ul li.leaf {
 	list-style: none;
 }
 
-p.button a:link,
-p.button a:visited {
+p.button {
+    background: #4FAD26;
     color: #fff;
-    text-decoration: none;
+    text-align: center;
+    text-shadow: none;
+    text-transform: uppercase;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: all 0.5s;
+    margin: 0 0 20px 0;
 }
 
 p.button:hover {
     background: #2a7a07;
+}
+
+p.button a:link,
+p.button a:visited {
+    color: #fff;
+    text-decoration: none;
 }
 
 
@@ -89,8 +102,7 @@ input[type='password'] {
 	height: 25px;
 }
 
-input[type='submit'],
-p.button {
+input[type='submit'] {
     background: #4FAD26;
     color: #fff;
     text-align: center;
@@ -484,13 +496,11 @@ input[type='submit']:hover {
 }
 
 #zone-content-wrapper {
-	width: 1200px;
-	margin: auto;
 }
 
 #zone-content {
-	margin: 0;
-	width: 100%;
+	width: 1200px;
+	margin: auto;
 }
 
 .breadcrumb {
@@ -501,6 +511,7 @@ input[type='submit']:hover {
 
 #region-banner {
 	width: 100%;
+    height: auto;
 	margin: 0;
 }
 
@@ -522,6 +533,20 @@ input[type='submit']:hover {
 	width: 100%
 }
 
+#region-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1#page-title {
+    background-color: #4FAD26;
+    padding: 10px 50px;
+    width: fit-content;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 20px 100px;
+}
+
 #region-sidebar-first + #region-content {
 	width: 75%;
 }
@@ -537,31 +562,72 @@ input[type='submit']:hover {
 
 /*######################################## PAGE USER LOGIN ########################################*/
 
+.page-user-login .login,
+.page-user-login .new-account {
+    width: 50%;
+    float: left;
+}
 
+.page-user-login .login h2,
+.page-user-login .new-account h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
 
 .page-user-login div.tabs.clearfix,
 .page-user-login form#user-login {
-    width: 50%;
     margin: 0;
-    height: 400px;
+    float: left;
+    width: 100%;
 }
 
-.page-user-login div.tabs.clearfix {
+.page-user-login ul.primary.tabs.clearfix {
+    border: none;
+}
+
+.page-user-login ul.primary.tabs.clearfix li:nth-child(1) {
+    width: 45%;
     float: right;
 }
 
-.page-user-login form#user-login {
-    float: left;
-}
-
-.page-user-login ul.tabs.clearfix {
-    float: left;
-}
-
-.page-user-login ul.primary {
+.page-user-login ul.primary.tabs.clearfix li:nth-child(3) {
 
 }
 
+.page-user-login ul.primary.tabs.clearfix li:nth-child(1) a {
+    background-color: #4FAD26;
+    color: #fff;
+    text-align: center;
+    text-shadow: none;
+    text-transform: uppercase;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: all 0.5s;
+    position: absolute;
+    margin: 150px 0 0 0;
+}
+
+.page-user-login ul.primary.tabs.clearfix li:th-child(1) a:hover {
+    background-color: #2a7a07;
+}
+
+.page-user-login ul.primary.tabs.clearfix li:nth-child(2) a {
+    display: none;
+}
+
+.page-user-login ul.primary.tabs.clearfix li:nth-child(3) a {
+    background: none;
+    border: none;
+    color: #4FAD26;
+    position: absolute;
+    margin: 215px 0 0 200px;
+}
+
+.page-user-login form#user-login > div {
+    width: 50%;
+    margin: -70px 0 30px 30px;
+}
 
 
 
