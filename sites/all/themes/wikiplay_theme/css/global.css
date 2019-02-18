@@ -121,7 +121,22 @@ input[type='submit']:hover {
 
 .form-item div.description {
     margin: 10px 0 0 0;
-    font-style: italic;
+}
+
+.form-item input.error,
+.form-item textarea.error, 
+.form-item select.error {
+    border-bottom: 2px solid red;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}
+
+.form-item input.error:focus {
+    border-bottom: 2px solid #4FAD26;
+    border-left: none;
+    border-right: none;
+    border-top: none;
 }
 
 
@@ -700,9 +715,70 @@ h1#page-title {
     margin: 30px auto;
 }
 
-.page-user-password ul.primary.tabs.clearfix li {
+.page-user-password ul.primary.tabs.clearfix li,
+.page-user-register ul.primary.tabs.clearfix li {
     display: none;
 }
+
+.page-user-register form#user-register-form {
+    width: 75%;
+    margin: 50px auto;
+}
+
+.page-user-register form#user-register-form label {
+    width: 230px;
+    text-align: right;
+    margin-right: 20px;
+}
+
+.page-user-register form#user-register-form input {
+    width: 300px;
+    margin: 15px 0;
+}
+
+.page-user-register form#user-register-form .description {
+    width: 555px;
+    text-align: right;
+}
+
+.password-parent,
+.confirm-parent {
+    width: 100%;
+}
+
+.password-strength {
+    float: right;
+}
+
+div.password-confirm {
+    display: none;
+}
+
+.page-user-register form#user-register-form div.password-suggestions.description {
+    width: fit-content;
+    float: right;
+    text-align: left;
+    font-size: 0.8rem;
+    border: none;
+    margin: -40px 0 0 0;
+    padding: 0;
+}
+
+div.form-item div.password-suggestions.description ul {
+    margin: 10px 0 0 50px;
+}
+
+
+div.form-item div.password-suggestions.description ul li {
+    font-size: 0.7rem;
+}
+
+.page-user-register form#user-register-form .form-actions {
+    width: fit-content;
+    margin: 20px auto;
+}
+
+
 
 
 /*---------------------------------------- FOOTER ----------------------------------------*/
