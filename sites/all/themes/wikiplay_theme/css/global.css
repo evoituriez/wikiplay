@@ -119,7 +119,10 @@ input[type='submit']:hover {
     background: #2a7a07;
 }
 
-
+.form-item div.description {
+    margin: 10px 0 0 0;
+    font-style: italic;
+}
 
 
 /*---------------------------------------- HEADER ----------------------------------------*/
@@ -505,7 +508,8 @@ input[type='submit']:hover {
 
 .breadcrumb {
 	width: 1200px;
-	margin: auto;
+    position: absolute;
+	margin: -300px auto;
 	padding: 20px 0 0 50px;
 }
 
@@ -560,41 +564,43 @@ h1#page-title {
 }
 
 
-/*######################################## PAGE USER LOGIN ########################################*/
+/*######################################## PAGE USER LOGIN / USER / REGISTER / FORGOT PASSWORD ########################################*/
 
-.page-user-login .login,
-.page-user-login .new-account {
+[class*="page-user"] .login,
+[class*="page-user"] .new-account {
     width: 50%;
     float: left;
 }
 
-.page-user-login .login h2,
-.page-user-login .new-account h2 {
+[class*="page-user"] .login h2,
+[class*="page-user"] .new-account h2 {
     font-size: 1.5rem;
     font-weight: 600;
 }
 
-.page-user-login div.tabs.clearfix,
-.page-user-login form#user-login {
+[class*="page-user"] div.tabs.clearfix,
+[class*="page-user"] form#user-login {
     margin: 0;
     float: left;
     width: 100%;
 }
 
-.page-user-login ul.primary.tabs.clearfix {
+[class*="page-user"] ul.primary.tabs.clearfix {
     border: none;
 }
 
-.page-user-login ul.primary.tabs.clearfix li:nth-child(1) {
+[class*="page-user"] ul.primary.tabs.clearfix li:nth-child(1) {
     width: 45%;
     float: right;
 }
 
-.page-user-login ul.primary.tabs.clearfix li:nth-child(3) {
+[class*="page-user"] ul.primary.tabs.clearfix li:nth-child(3) {
 
 }
 
-.page-user-login ul.primary.tabs.clearfix li:nth-child(1) a {
+[class*="page-user"] ul.primary.tabs.clearfix li:nth-child(1) a,
+[class*="page-user"] ul.primary.tabs.clearfix li:nth-child(1) a:visited,
+[class*="page-user"] ul.primary.tabs.clearfix li:nth-child(1) a:active {
     background-color: #4FAD26;
     color: #fff;
     text-align: center;
@@ -603,32 +609,100 @@ h1#page-title {
     border: none;
     padding: 10px 20px;
     border-radius: 50px;
-    transition: all 0.5s;
     position: absolute;
     margin: 150px 0 0 0;
 }
 
-.page-user-login ul.primary.tabs.clearfix li:th-child(1) a:hover {
+[class*="page-user"] ul.primary.tabs.clearfix li:nth-child(1) a:hover {
     background-color: #2a7a07;
+    transition: all 0.5s;
 }
 
-.page-user-login ul.primary.tabs.clearfix li:nth-child(2) a {
+[class*="page-user"] ul.primary.tabs.clearfix li:nth-child(2) a {
     display: none;
 }
 
-.page-user-login ul.primary.tabs.clearfix li:nth-child(3) a {
+[class*="page-user"] ul.primary.tabs.clearfix li:nth-child(3) a,
+[class*="page-user"] ul.primary.tabs.clearfix li:nth-child(3) a:visited,
+[class*="page-user"] ul.primary.tabs.clearfix li:nth-child(3) a:active {
     background: none;
     border: none;
     color: #4FAD26;
     position: absolute;
-    margin: 215px 0 0 200px;
+    margin: 245px 0 0 180px;
 }
 
-.page-user-login form#user-login > div {
+[class*="page-user"] ul.primary.tabs.clearfix li:nth-child(3) a:hover {
+    color: #2a7a07;
+}
+
+[class*="page-user"] ul.primary.tabs.clearfix li .active {
+    display: none;
+}
+
+[class*="page-user"] form#user-login > div {
     width: 50%;
     margin: -70px 0 30px 30px;
 }
 
+[class*="page-user"] form#user-login .form-item label[for="edit-name"] {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    background-image: url("../img/account-icon.svg");
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+[class*="page-user"] form#user-login .form-item label[for="edit-pass"] {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    background-image: url("../img/padlock.svg");
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+[class*="page-user"] input[type="text"],
+[class*="page-user"] input[type="password"] {
+    width: 200px;
+    margin-top: 5px;
+    color: #000;
+    font-size: 0.9rem;
+}
+
+[class*="page-user"] form#user-login .form-item label,
+[class*="page-user"] form#user-login .form-item .form-required {
+    color: transparent;
+}
+
+[class*="page-user"] form#user-pass {
+    width: fit-content;
+    margin: auto;
+}
+
+[class*="page-user"] form#user-pass .form-item {
+    margin-top: 50px;
+}
+
+[class*="page-user"] form#user-pass .form-item label {
+    width: 200px;
+}
+
+[class*="page-user"] form#user-pass .form-item input[type="text"] {
+    width: 350px;
+}
+
+[class*="page-user"] form#user-pass #edit-actions {
+    width: fit-content;
+    margin: 30px auto;
+}
+
+.page-user-password ul.primary.tabs.clearfix li {
+    display: none;
+}
 
 
 /*---------------------------------------- FOOTER ----------------------------------------*/
