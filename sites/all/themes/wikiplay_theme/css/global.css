@@ -8,6 +8,8 @@ colors:
 Green base : #4FAD26
 Green hover : #2a7a07
 Grey : #EFEFEF
+Red : #D24848
+Orange : #EF8C04
 
 */
 
@@ -18,13 +20,40 @@ Grey : #EFEFEF
 
 body {
     font-family: "Open Sans Regular", Verdana, sans-serif;
+    letter-spacing: normal;
     width: 100%;
 	margin: 0;
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6, div, p, span {
+h1, h2, h3, h4, h5, h6, div, p, span, a {
     font-family: "Open Sans", Verdana, sans-serif;
+    letter-spacing: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 3rem;
+    letter-spacing: 0.2rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+a:hover, a:visited, a:active, a:link {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
 }
 
 p {
@@ -508,7 +537,7 @@ input[type='submit']:hover {
     margin: 40px auto;
 }
 
-/*######################################## OTHER CONTENTS ########################################*/
+/*######################################## GLOBAL CONTENTS ########################################*/
 
 #section-content {
 	width: 100%;
@@ -696,7 +725,7 @@ h1#page-title {
 
 [class*="page-user"] input[type="text"],
 [class*="page-user"] input[type="password"] {
-    width: 200px;
+    width: 280px;
     margin-top: 5px;
     color: #000;
     font-size: 0.9rem;
@@ -730,7 +759,8 @@ h1#page-title {
 }
 
 .page-user-password ul.primary.tabs.clearfix li,
-.page-user-register ul.primary.tabs.clearfix li {
+.page-user-register ul.primary.tabs.clearfix li,
+.page-user-edit ul.primary.tabs.clearfix li {
     display: none;
 }
 
@@ -793,6 +823,60 @@ div.form-item div.password-suggestions.description ul li {
 }
 
 
+/*######################################## GAMES PAGE ########################################*/
+
+.page-jeux .node-game.node-teaser {
+    padding: 10px;
+    margin: 15px;
+    width: 30%;
+    height: 300px;
+    background-color: #EFEFEF;
+    float: left;
+}
+
+.page-jeux div.views-row:nth-child(3n+1) .node-game.node-teaser {
+    margin-left: 0;
+}
+
+.page-jeux div.views-row:nth-child(3n) .node-game.node-teaser {
+    float: right;
+    margin-right: 0;
+}
+
+.page-jeux .node-game.node-teaser h2 {
+    font-size: 1.1rem;
+}
+
+.page-jeux .node-game.node-teaser h2 a {
+    color: #4FAD26;
+    line-height: auto;
+}
+
+.page-jeux .node-game.node-teaser div.target {
+    float: right;
+}
+
+.page-jeux .node-game.node-teaser div.type {
+    font-size: 0.8rem;
+    font-weight: 900;
+}
+
+.page-jeux .node-game.node-teaser p.types {
+    font-size: 0.8rem;
+}
+
+.page-jeux .node-game.node-teaser p.types span.type::after {
+    content: " - "
+}
+
+.page-jeux .node-game.node-teaser p.types span.type:last-child::after {
+    content: ""
+}
+
+.page-jeux .node-game.node-teaser p.button {
+    margin: auto;
+    width: 50%;
+}
 
 
 /*---------------------------------------- FOOTER ----------------------------------------*/
