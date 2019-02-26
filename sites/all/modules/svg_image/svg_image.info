@@ -1,0 +1,9 @@
+name = SVG Image Support
+description = Provides support for SVG images to image fields.
+core = 7.x
+
+; Information added by Drupal.org packaging script on 2018-10-15
+version = "7.x-1.2"
+core = "7.x"
+project = "svg_image"
+datestamp = "1539583688"
