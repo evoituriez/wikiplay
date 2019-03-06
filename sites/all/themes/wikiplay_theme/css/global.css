@@ -69,7 +69,7 @@ ul li.leaf {
 	list-style: none;
 }
 
-p.button {
+p.button a {
     background: #4FAD26;
     color: #fff;
     text-align: center;
@@ -82,7 +82,7 @@ p.button {
     margin: 0 0 20px 0;
 }
 
-p.button:hover {
+p.button a:hover {
     background: #2a7a07;
 }
 
@@ -92,6 +92,11 @@ p.button a:visited {
     text-decoration: none;
 }
 
+.description {
+    color: #000;
+    padding: 0;
+    margin: 10px 0;
+}
 
 /*######################################## FORMS ########################################*/
 
@@ -190,7 +195,7 @@ input[type='submit']:hover {
 	margin:0;
 }
 
-#zone-header-wrapper {
+#section-header {
 	width: 1200px;
 	height: 100px;
 	margin: auto;
@@ -330,8 +335,7 @@ input[type='submit']:hover {
     width: 100%;
     margin: 0;
     padding: 0;
-    max-height: 650px;
-    overflow-y: hidden;
+    height: 650px;
 }
 
 #zone-highlight #region-highlight {
@@ -340,8 +344,9 @@ input[type='submit']:hover {
 }
 
 #zone-highlight #region-highlight #block-views-highlight-slider-hp-block .owl-wrapper-outer .owl-item img {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 650px;
+    overflow-x: hidden;
 }
 
 #zone-highlight #region-highlight #block-views-highlight-slider-hp-block .titles-block {
@@ -512,8 +517,8 @@ input[type='submit']:hover {
 }
 
 #zone-hp-first #block-views-how-it-works-hp-block p.button {
-    width: 180px;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 40px auto;
+    width: 220px;
 }
 
 #zone-hp-second {
@@ -533,22 +538,15 @@ input[type='submit']:hover {
 }
 
 #region-hp-second .content p.button {
-    width: 160px;
+    width: 170px;
     margin: 40px auto;
 }
 
 /*######################################## GLOBAL CONTENTS ########################################*/
 
-#section-content {
-	width: 100%;
-}
-
-#zone-content-wrapper {
-}
-
 #zone-content {
-	width: 1200px;
-	margin: auto;
+    width: 1200px;
+    margin: 0 auto 30px auto;
 }
 
 .breadcrumb {
@@ -826,9 +824,9 @@ div.form-item div.password-suggestions.description ul li {
 /*######################################## GAMES PAGE ########################################*/
 
 .page-jeux .node-game.node-teaser {
-    padding: 10px;
-    margin: 15px;
-    width: 30%;
+    padding: 2%;
+    margin: 1%;
+    width: 28%;
     height: 300px;
     background-color: #EFEFEF;
     float: left;
@@ -845,6 +843,9 @@ div.form-item div.password-suggestions.description ul li {
 
 .page-jeux .node-game.node-teaser h2 {
     font-size: 1.1rem;
+    width: 92%;
+    margin: 0;
+    display: inline-block;
 }
 
 .page-jeux .node-game.node-teaser h2 a {
@@ -852,32 +853,197 @@ div.form-item div.password-suggestions.description ul li {
     line-height: auto;
 }
 
-.page-jeux .node-game.node-teaser div.target {
+.page-jeux .node-game.node-teaser span.warning {
     float: right;
+    width: 8%;
+    height: auto;
+    display: inline-block;
 }
 
-.page-jeux .node-game.node-teaser div.type {
-    font-size: 0.8rem;
+.page-jeux .node-game.node-teaser span.warning p {
+    display: none;
+    color: #fff;
+}
+
+.page-jeux .node-game.node-teaser span.warning:hover p {
+    display: block;
+    float: right;
+    text-align: center;
+    background-color: #4FAD26;
+    padding: 2px;
+    margin: 2px 0 2px 2px;
+    width: 100px;
+    font-size: 0.7rem;
+}
+
+.page-jeux .node-game.node-teaser div.type,
+.page-jeux .node-game.node-teaser div.levels {
+    font-size: 0.9rem;
+    margin: 20px 0 20px 0;
+}
+
+.page-jeux .node-game.node-teaser span.label-inline {
     font-weight: 900;
 }
 
-.page-jeux .node-game.node-teaser p.types {
-    font-size: 0.8rem;
+.page-jeux .node-game.node-teaser div.description {
+    font-size: 0.9rem;
+    margin: 10px 0;
+    height: 120px;
 }
 
-.page-jeux .node-game.node-teaser p.types span.type::after {
-    content: " - "
-}
-
-.page-jeux .node-game.node-teaser p.types span.type:last-child::after {
-    content: ""
+.page-jeux .node-game.node-teaser div.levels + p.button {
+    margin-top: 150px;
 }
 
 .page-jeux .node-game.node-teaser p.button {
     margin: auto;
-    width: 50%;
+    width: 120px;
 }
 
+.node-type-game #zone-content span.warning {
+    float: right;
+    width: 5%;
+    height: auto;
+    display: inline-block;
+}
+
+.node-type-game #zone-content span.warning p {
+    display: none;
+    color: #fff;
+}
+
+.node-type-game #zone-content span.warning:hover p {
+    display: block;
+    float: right;
+    text-align: center;
+    background-color: #4FAD26;
+    padding: 2px;
+    margin: 2px 0 2px 2px;
+    width: 100px;
+    font-size: 0.7rem;
+}
+
+.node-type-game #zone-content .node-round.node-teaser {
+    float: left;
+    width: 30%;
+    min-height: 200px;
+    background-color: #EFEFEF;
+    margin: 0 2% 2% 0;
+    padding: 1%;
+}
+
+.node-type-game #zone-content .round div.node-round.node-teaser:nth-child(3n) {
+    float: right;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.node-type-game #zone-content .node-game .creation {
+    margin-top: 30px;
+}
+
+.node-type-game #zone-content .node-game div.author-photo,
+.node-type-game #zone-content .node-game div.information {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.node-type-game #zone-content .node-game div.author-photo img {
+    overflow:hidden;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+    width:50px;
+    height:50px;
+}
+
+.node-type-game #zone-content .node-game div.created-date,
+.node-type-game #zone-content .node-game div.author-name {
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+}
+
+.node-type-game #zone-content .node-game span.author-name,
+.node-type-game #zone-content .node-game span.created-date {
+    font-style: italic;
+}
+
+.node-type-game #zone-content .node-game div.types,
+.node-type-game #zone-content .node-game div.levels {
+    display: inline-block;
+    width: 40%;
+    font-size: 0.9rem;
+    margin: 20px 0 20px 0;
+}
+
+.node-type-game #zone-content .node-game span.warning {
+    margin-right : 20px;
+    width: 40px;
+    height: 40px;
+}
+
+.node-type-game #zone-content .node-game div.description {
+    border-top: 1px solid #4FAD26;
+    padding: 30px 0;
+}
+
+.node-type-game #zone-content div.types .label-inline,
+.node-type-game #zone-content div.levels .label-inline {
+    font-weight: 900;
+}
+
+.node-type-game #zone-content .node-round.node-teaser h2 {
+    font-size: 1.1rem;
+    color: #4FAD26;
+}
+
+.node-type-game .add-round p.button {
+    width: 200px;
+    display: block;
+    margin: 30px auto;
+}
+
+.node-type-game .node-round div.question-types {
+    margin-bottom: 10px;
+    font-weight: 900;
+}
+
+.node-type-game .node-round div.question-types .item-list {
+    width: fit-content;
+    display: inline-block;
+}
+
+.node-type-game .node-round ul.shs-hierarchy {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.node-type-game .node-round .shs-hierarchy li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 0 0 5px;
+}
+
+.node-type-game .node-round .shs-hierarchy li.first {
+    margin: 0;
+}
+
+.node-type-game .node-round h3 {
+    font-size: 0.9rem;
+}
+
+.node-type-game .node-round.node-teaser .node-question p.button a {
+    font-size: 0.7rem;
+    padding: 10px;
+}
+
+.node-type-game .node-round.node-teaser > p.button {
+    width: 170px;
+    margin: 30px auto 20px auto;
+}
 
 /*---------------------------------------- FOOTER ----------------------------------------*/
 
@@ -885,18 +1051,18 @@ div.form-item div.password-suggestions.description ul li {
     background: rgba(79, 173, 38, 1);
 }
 
-#section-footer #zone-footer-wrapper {
+#section-footer #zone-footer {
 	width: 1200px;
 	margin: auto;
     padding: 40px 0;
 }
 
-#zone-footer-wrapper #zone-footer>div {
+#section-footer #zone-footer>div {
 	float: left;
 	margin: 0;
 }
 
-#zone-footer-wrapper #zone-footer h2.block-title {
+#section-footer #zone-footer h2.block-title {
     margin: 0;
     padding: 0;
     text-align: center;
@@ -904,7 +1070,7 @@ div.form-item div.password-suggestions.description ul li {
     color: #fff;
 }
 
-#zone-footer-wrapper #zone-footer h2.block-title::after {
+#section-footer #zone-footer h2.block-title::after {
     content:'';
     position:absolute;
     width:100px;
@@ -991,28 +1157,151 @@ div.form-item div.password-suggestions.description ul li {
 
 /*---------------------------------------- GLOBAL ----------------------------------------*/
 
+/*######################################## SMALL DESKTOP ########################################*/
+
+
+@media screen and (max-width: 1280px) {
+    
+body #page {
+    max-width: 1600px;
+}
+    
+#zone-content, #zone-header, #zone-footer {
+    width: 1000px;
+}
+    
+}
+
+/*######################################## HORIZONTAL TABLET ########################################*/
+
+
+@media screen and (max-width: 1024px) {
+    
+#zone-header-wrapper {
+	width: 1000px;
+} 
+ 
+body #page {
+    max-width: 1280px;
+}
+    
+#zone-content, #zone-header, #zone-footer {
+    width: 750px;
+}
+
+}
+
+/*######################################## VERTICAL TABLET ########################################*/
+
+@media screen and (max-width: 768px) {
+    
+#zone-header-wrapper {
+	width: 700px;
+} 
+    
+body #page {
+    max-width: 1024px;
+}
+    
+#zone-content, #zone-header, #zone-footer {
+    width: 300px;
+}
+
+}
+
+/*######################################## MOBILE DEVICE ########################################*/
+
+@media screen and (max-width: 320px) {
+    
+#zone-header-wrapper {
+	width: 300px;
+} 
+
+body #page {
+    max-width: 768px;
+}
+    
+#zone-content, #zone-header, #zone-footer {
+    width: 100%;
+}
+
+}
 
 
 /*---------------------------------------- HEADER ----------------------------------------*/
 
+/*######################################## SMALL DESKTOP ########################################*/
+
+/*######################################## HORIZONTAL TABLET ########################################*/
+
+/*######################################## VERTICAL TABLET ########################################*/
+
+/*######################################## MOBILE DEVICE ########################################*/
 
 
 /*---------------------------------------- CONTENT ----------------------------------------*/
 
-
-/*######################################## HOME PAGE ########################################*/
+/*######################################## SMALL DESKTOP ########################################*/
 
 @media screen and (max-width: 1280px) {
+
+zone-highlight {
+    height: 650px;
+}
     
-    #zone-highlight img {
-        height: 500px;
-    }
+#zone-highlight #region-highlight #block-views-highlight-slider-hp-block .owl-wrapper-outer .owl-item img {
+    height: 650px;
+}
+    
+}
+
+@media screen and (max-width: 1024px) {
+
+zone-highlight {
+    height: 500px;
+}
+    
+#zone-highlight #region-highlight #block-views-highlight-slider-hp-block .owl-wrapper-outer .owl-item img {
+    height: 500px;
+}
+    
+}
+
+@media screen and (max-width: 768px) {
+ 
+zone-highlight {
+    height: 300px;
+}
+
+#zone-highlight #region-highlight #block-views-highlight-slider-hp-block .owl-wrapper-outer .owl-item img {
+    height: 300px;
+}
+    
+}
+
+@media screen and (max-width: 320px) {
+
+zone-highlight {
+    height: 200px;
+}
+    
 }
 
 
+/*######################################## HORIZONTAL TABLET ########################################*/
 
-/*######################################## OTHER CONTENTS ########################################*/
+/*######################################## VERTICAL TABLET ########################################*/
+
+/*######################################## MOBILE DEVICE ########################################*/
 
 
 
 /*---------------------------------------- FOOTER ----------------------------------------*/
+
+/*######################################## SMALL DESKTOP ########################################*/
+
+/*######################################## HORIZONTAL TABLET ########################################*/
+
+/*######################################## VERTICAL TABLET ########################################*/
+
+/*######################################## MOBILE DEVICE ########################################*/
