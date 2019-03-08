@@ -56,8 +56,12 @@ a:hover, a:visited, a:active, a:link {
     font-weight: 600;
 }
 
+div {
+    margin: 0;
+}
+
 p {
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 body #page {
@@ -67,6 +71,10 @@ body #page {
 
 ul li.leaf {
 	list-style: none;
+}
+
+p.button {
+    width: fit-content;
 }
 
 p.button a {
@@ -96,6 +104,19 @@ p.button a:visited {
     color: #000;
     padding: 0;
     margin: 10px 0;
+}
+
+ul.shs-hierarchy {
+    padding-left: 0;
+}
+
+ul.shs-hierarchy li {
+    float: left;
+    margin: 0 0 0 5px;
+}
+
+ul.shs-hierarchy li.first {
+    margin: 0;
 }
 
 /*######################################## FORMS ########################################*/
@@ -171,6 +192,18 @@ input[type='submit']:hover {
     border-left: none;
     border-right: none;
     border-top: none;
+}
+
+/*######################################## COLORBOX ########################################*/
+
+
+#cboxClose {
+    top: 0;
+}
+
+#cboxLoadedContent {
+    padding: 0 50px;
+    margin: 0;
 }
 
 
@@ -518,7 +551,6 @@ input[type='submit']:hover {
 
 #zone-hp-first #block-views-how-it-works-hp-block p.button {
     margin: 0 auto 40px auto;
-    width: 220px;
 }
 
 #zone-hp-second {
@@ -538,7 +570,6 @@ input[type='submit']:hover {
 }
 
 #region-hp-second .content p.button {
-    width: 170px;
     margin: 40px auto;
 }
 
@@ -698,7 +729,7 @@ h1#page-title {
 
 [class*="page-user"] form#user-login > div {
     width: 50%;
-    margin: -70px 0 30px 30px;
+    margin: -75px 0 30px 30px;
 }
 
 [class*="page-user"] form#user-login .form-item label[for="edit-name"] {
@@ -898,7 +929,6 @@ div.form-item div.password-suggestions.description ul li {
 
 .page-jeux .node-game.node-teaser p.button {
     margin: auto;
-    width: 120px;
 }
 
 .node-type-game #zone-content span.warning {
@@ -973,15 +1003,16 @@ div.form-item div.password-suggestions.description ul li {
 .node-type-game #zone-content .node-game div.types,
 .node-type-game #zone-content .node-game div.levels {
     display: inline-block;
-    width: 40%;
-    font-size: 0.9rem;
-    margin: 20px 0 20px 0;
+    width: fit-content;
+    font-size: 1.4rem;
+    margin: 20px 100px 20px 0;
+    vertical-align: top;
 }
 
 .node-type-game #zone-content .node-game span.warning {
     margin-right : 20px;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
 }
 
 .node-type-game #zone-content .node-game div.description {
@@ -1000,9 +1031,9 @@ div.form-item div.password-suggestions.description ul li {
 }
 
 .node-type-game .add-round p.button {
-    width: 200px;
     display: block;
     margin: 30px auto;
+    font-size: 1.5rem;
 }
 
 .node-type-game .node-round div.question-types {
@@ -1010,40 +1041,109 @@ div.form-item div.password-suggestions.description ul li {
     font-weight: 900;
 }
 
-.node-type-game .node-round div.question-types .item-list {
-    width: fit-content;
-    display: inline-block;
-}
-
-.node-type-game .node-round ul.shs-hierarchy {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.node-type-game .node-round .shs-hierarchy li {
-    list-style: none;
-    display: inline-block;
-    margin: 0 0 0 5px;
-}
-
-.node-type-game .node-round .shs-hierarchy li.first {
-    margin: 0;
-}
-
 .node-type-game .node-round h3 {
     font-size: 0.9rem;
+    width: 300px;
+    float: left;
+}
+
+.node-type-game .node-round .node-question {
+    height: auto;
+}
+
+.node-type-game .node-round .node-question::after {
+    content: '';
+    width: 50px;
+    height: 1px;
+    background-color: #000;
+    visibility: visible;
+    margin:auto;
+    margin-bottom: 10px;
+}
+
+.node-type-game .node-round .node-question:last-child::after {
+    visibility: hidden;
+}
+
+.node-type-game .node-round.node-teaser .node-question p.question-types {
+    margin-bottom: 10px;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.node-type-game .node-round.node-teaser .node-question .see-more {
+}
+
+.node-type-game .node-round.node-teaser .node-question p.button {
+    float: right;
+    background-image: url('../img/eye.svg');
+    background-repeat: no-repeat;
+    background-color: #4FAD26;
+    background-size: 30px 30px;
+    background-position: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    margin: -10px 0 0 0;
+    transition: all 0.5s;
+}
+
+.node-type-game .node-round.node-teaser .node-question p.button:hover {
+    background-color: #2a7a07;
 }
 
 .node-type-game .node-round.node-teaser .node-question p.button a {
-    font-size: 0.7rem;
-    padding: 10px;
+    color: transparent;
+    background-color: transparent;
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    margin: 0;
+    display: block;
 }
 
 .node-type-game .node-round.node-teaser > p.button {
-    width: 170px;
-    margin: 30px auto 20px auto;
+    width: fit-content;
+    margin: 0 auto 20px auto;
 }
+
+.node-question .question-types .question-types {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+.node-question .question-levels,
+.node-question .tv-shows,
+.node-question .question-themes,
+.node-question .question {
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+.node-question div.question-levels,
+.node-question div.tv-shows {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.node-question div.question-levels {
+    margin-right: 50px;
+}
+
+.node-question span.label-inline,
+.node-question div.label-above {
+    font-weight: 900;
+}
+
+.tv-shows .item-list,
+.tv-shows .label-inline {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+}
+
+
 
 /*---------------------------------------- FOOTER ----------------------------------------*/
 
