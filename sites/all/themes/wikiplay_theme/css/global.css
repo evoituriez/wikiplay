@@ -62,6 +62,7 @@ div {
 
 p {
     font-size: 1rem;
+    margin: 10px 0;
 }
 
 body #page {
@@ -854,6 +855,9 @@ div.form-item div.password-suggestions.description ul li {
 
 /*######################################## GAMES PAGE ########################################*/
 
+
+/* DISPLAY GAME FULL CONTENT */
+
 .page-jeux .node-game.node-teaser {
     padding: 2%;
     margin: 1%;
@@ -872,31 +876,31 @@ div.form-item div.password-suggestions.description ul li {
     margin-right: 0;
 }
 
-.page-jeux .node-game.node-teaser h2 {
+.page-jeux .node-game h2 {
     font-size: 1.1rem;
     width: 92%;
     margin: 0;
     display: inline-block;
 }
 
-.page-jeux .node-game.node-teaser h2 a {
+.page-jeux .node-game h2 a {
     color: #4FAD26;
     line-height: auto;
 }
 
-.page-jeux .node-game.node-teaser span.warning {
+.page-jeux .node-game span.warning {
     float: right;
     width: 8%;
     height: auto;
     display: inline-block;
 }
 
-.page-jeux .node-game.node-teaser span.warning p {
+.page-jeux .node-game span.warning p {
     display: none;
     color: #fff;
 }
 
-.page-jeux .node-game.node-teaser span.warning:hover p {
+.page-jeux .node-game span.warning:hover p {
     display: block;
     float: right;
     text-align: center;
@@ -907,28 +911,34 @@ div.form-item div.password-suggestions.description ul li {
     font-size: 0.7rem;
 }
 
-.page-jeux .node-game.node-teaser div.type,
-.page-jeux .node-game.node-teaser div.levels {
+.page-jeux .node-game div.type,
+.page-jeux .node-game div.levels {
     font-size: 0.9rem;
     margin: 20px 0 20px 0;
 }
 
-.page-jeux .node-game.node-teaser span.label-inline {
+.page-jeux .node-game span.label-inline {
     font-weight: 900;
 }
 
-.page-jeux .node-game.node-teaser div.description {
+.page-jeux .node-game div.description {
     font-size: 0.9rem;
-    margin: 10px 0;
-    height: 120px;
+    height: 100px;
+    overflow: hidden;
+    margin: 0;
 }
 
-.page-jeux .node-game.node-teaser div.levels + p.button {
-    margin-top: 150px;
+.page-jeux .node-game div.description p {
+    margin: 0;
 }
 
-.page-jeux .node-game.node-teaser p.button {
-    margin: auto;
+.page-jeux .node-game div.levels + p.button {
+    margin-top: 100px;
+}
+
+.page-jeux .node-game p.button {
+    margin: 10px auto;
+    padding-top: 20px;
 }
 
 .node-type-game #zone-content span.warning {
@@ -954,13 +964,13 @@ div.form-item div.password-suggestions.description ul li {
     font-size: 0.7rem;
 }
 
-.node-type-game #zone-content .node-round.node-teaser {
+.node-type-game #zone-content .node-round {
     float: left;
-    width: 30%;
+    width: 31%;
     min-height: 200px;
     background-color: #EFEFEF;
     margin: 0 2% 2% 0;
-    padding: 1%;
+    padding: 1% 0 1% 1%;
 }
 
 .node-type-game #zone-content .round div.node-round.node-teaser:nth-child(3n) {
@@ -969,18 +979,18 @@ div.form-item div.password-suggestions.description ul li {
     margin-left: 0;
 }
 
-.node-type-game #zone-content .node-game .creation {
+.node-type-game .creation {
     margin-top: 30px;
 }
 
-.node-type-game #zone-content .node-game div.author-photo,
-.node-type-game #zone-content .node-game div.information {
+.node-type-game div.author-photo,
+.node-type-game div.content-information {
     display: inline-block;
     margin-right: 10px;
     vertical-align: middle;
 }
 
-.node-type-game #zone-content .node-game div.author-photo img {
+.node-type-game div.author-photo img {
     overflow:hidden;
     -webkit-border-radius:50px;
     -moz-border-radius:50px;
@@ -989,14 +999,14 @@ div.form-item div.password-suggestions.description ul li {
     height:50px;
 }
 
-.node-type-game #zone-content .node-game div.created-date,
-.node-type-game #zone-content .node-game div.author-name {
+div.created-date,
+div.author-name {
     font-size: 0.9rem;
     margin-bottom: 3px;
 }
 
-.node-type-game #zone-content .node-game span.author-name,
-.node-type-game #zone-content .node-game span.created-date {
+div.author-name span.author-name,
+div.created-date span.created-date {
     font-style: italic;
 }
 
@@ -1018,6 +1028,13 @@ div.form-item div.password-suggestions.description ul li {
 .node-type-game #zone-content .node-game div.description {
     border-top: 1px solid #4FAD26;
     padding: 30px 0;
+    margin: 0;
+}
+
+.node-type-game #zone-content .node-game div.description p {
+    margin: auto;
+    width: 75%;
+    text-align: center;
 }
 
 .node-type-game #zone-content div.types .label-inline,
@@ -1026,7 +1043,8 @@ div.form-item div.password-suggestions.description ul li {
 }
 
 .node-type-game #zone-content .node-round.node-teaser h2 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
     color: #4FAD26;
 }
 
@@ -1037,14 +1055,32 @@ div.form-item div.password-suggestions.description ul li {
 }
 
 .node-type-game .node-round div.question-types {
-    margin-bottom: 10px;
     font-weight: 900;
+}
+
+.node-type-game .node-question p.question-types {
+    font-style: italic;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.node-type-game .node-round .node-question .question-types p.question-types {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+.node-type-game .node-round .see-more,
+.node-type-game .node-round h3 {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .node-type-game .node-round h3 {
     font-size: 0.9rem;
-    width: 300px;
-    float: left;
+    width: 80%;
+    text-align: justify;
+    margin: 10px 0;
 }
 
 .node-type-game .node-round .node-question {
@@ -1053,29 +1089,28 @@ div.form-item div.password-suggestions.description ul li {
 
 .node-type-game .node-round .node-question::after {
     content: '';
-    width: 50px;
-    height: 1px;
-    background-color: #000;
+    width: 80px;
+    height: 2px;
+    background-color: #4FAD26;
     visibility: visible;
     margin:auto;
-    margin-bottom: 10px;
+    margin: 10px auto 20px auto;
 }
 
 .node-type-game .node-round .node-question:last-child::after {
     visibility: hidden;
 }
 
-.node-type-game .node-round.node-teaser .node-question p.question-types {
-    margin-bottom: 10px;
-    font-style: italic;
-    text-transform: uppercase;
+.node-type-game .node-round .node-question .see-more {
+    width: 20%;
 }
 
-.node-type-game .node-round.node-teaser .node-question .see-more {
+.node-type-game .node-round > p.button {
+    width: fit-content;
+    margin: 0 auto 20px auto;
 }
 
-.node-type-game .node-round.node-teaser .node-question p.button {
-    float: right;
+.node-type-game .node-round p.button.eye-icon {
     background-image: url('../img/eye.svg');
     background-repeat: no-repeat;
     background-color: #4FAD26;
@@ -1084,8 +1119,8 @@ div.form-item div.password-suggestions.description ul li {
     height: 40px;
     width: 40px;
     border-radius: 50px;
-    margin: -10px 0 0 0;
     transition: all 0.5s;
+    margin: auto;
 }
 
 .node-type-game .node-round.node-teaser .node-question p.button:hover {
@@ -1102,23 +1137,30 @@ div.form-item div.password-suggestions.description ul li {
     display: block;
 }
 
-.node-type-game .node-round.node-teaser > p.button {
-    width: fit-content;
-    margin: 0 auto 20px auto;
+/* DISPLAY QUESTION COLORBOX */
+
+.node-type-game .node-question > div {
+    margin: 15px 0;
 }
 
-.node-question .question-types .question-types {
-    font-size: 1rem;
-    text-transform: uppercase;
-    font-style: italic;
-}
-
-.node-question .question-levels,
-.node-question .tv-shows,
-.node-question .question-themes,
-.node-question .question {
+.node-question .label,
+.node-question .value {
     font-size: 1rem;
     margin: 10px 0;
+}
+
+.node-question span.label {
+    font-weight: 900;
+    color: #4FAD26;
+}
+
+.node-question div.question-types,
+.node-question div.creation {
+    display: inline-block;
+}
+
+.node-question div.question-types {
+    float: right;
 }
 
 .node-question div.question-levels,
@@ -1131,17 +1173,59 @@ div.form-item div.password-suggestions.description ul li {
     margin-right: 50px;
 }
 
-.node-question span.label-inline,
-.node-question div.label-above {
-    font-weight: 900;
-}
-
 .tv-shows .item-list,
 .tv-shows .label-inline {
     display: inline-block;
     vertical-align: top;
     margin: 0;
 }
+
+.node-question .answer-list p.title {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 900;
+    color: #4FAD26;
+}
+
+.node-question p.add-on.value {
+    font-style: italic;
+}
+
+.node-question p.add-on.value::before {
+    content: "(";
+}
+
+.node-question p.add-on.value::after {
+    content: ")";
+}
+
+.node-question div.correct-answer {
+    width: 10%;
+    margin: 0;
+    padding: 0;
+}
+
+.node-question ul.choice-list {
+    width: 90%;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.node-question div.correct-answer,
+.node-question ul.choice-list {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.node-question div.correct-answer p {
+    text-align: center;
+}
+
+.node-question .choice-list li {
+    list-style: none;
+}
+
+
 
 
 
