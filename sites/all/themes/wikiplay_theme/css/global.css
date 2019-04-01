@@ -18,6 +18,10 @@ Orange : #EF8C04
 
 /*---------------------------------------- GLOBAL ----------------------------------------*/
 
+html {
+    font-size: 16px;
+}
+
 body {
     font-family: "Open Sans Regular", Verdana, sans-serif;
     letter-spacing: normal;
@@ -76,6 +80,8 @@ ul li.leaf {
 
 p.button {
     width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
 }
 
 p.button a {
@@ -168,7 +174,7 @@ input[type='submit'] {
     padding: 10px 20px;
     border-radius: 50px;
     transition: all 0.5s;
-    margin: 0 0 20px 0;
+    margin: 0 0 10px 0;
 }
 
 input[type='submit']:hover {
@@ -414,11 +420,12 @@ input[type='submit']:hover {
 #zone-highlight #region-highlight #block-views-highlight-slider-hp-block .titles-block form input[type='text'] {
     background: none;
     margin-right: 20px;
+    padding-bottom: 20px;
     width: 30%;
     height: 30px;
     border-bottom: 2px solid #fff;
     color: #fff;
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
 }
 
@@ -428,7 +435,7 @@ input[type='submit']:hover {
 
 #zone-highlight #region-highlight #block-views-highlight-slider-hp-block .titles-block form input::placeholder {
     color: #fff;
-    font-size: 1rem;
+    font-size: 1.5rem;
     opacity: 0.8;
     text-transform: uppercase;
 }
@@ -583,6 +590,8 @@ input[type='submit']:hover {
 
 .breadcrumb {
 	width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
     position: absolute;
 	margin: -280px auto;
 	padding: 10px 10px;
@@ -634,6 +643,8 @@ h1#page-title {
     background-color: #4FAD26;
     padding: 10px 50px;
     width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
     text-transform: uppercase;
     color: #fff;
     margin: 0 0 20px 100px;
@@ -768,6 +779,8 @@ h1#page-title {
 
 [class*="page-user"] form#user-pass {
     width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
     margin: auto;
 }
 
@@ -785,6 +798,8 @@ h1#page-title {
 
 [class*="page-user"] form#user-pass #edit-actions {
     width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
     margin: 30px auto;
 }
 
@@ -830,6 +845,8 @@ div.password-confirm {
 
 .page-user-register form#user-register-form div.password-suggestions.description {
     width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
     float: right;
     text-align: left;
     font-size: 0.8rem;
@@ -849,6 +866,8 @@ div.form-item div.password-suggestions.description ul li {
 
 .page-user-register form#user-register-form .form-actions {
     width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
     margin: 20px auto;
 }
 
@@ -966,14 +985,14 @@ div.form-item div.password-suggestions.description ul li {
 
 .node-type-game #zone-content .node-round {
     float: left;
-    width: 31%;
+    margin: 10px;
+    width: 43%;
     min-height: 200px;
     background-color: #EFEFEF;
-    margin: 0 2% 2% 0;
-    padding: 1% 0 1% 1%;
+    padding: 1% 3% 1% 3%;
 }
 
-.node-type-game #zone-content .round div.node-round.node-teaser:nth-child(3n) {
+.node-type-game #zone-content .round div.node-round.node-teaser:nth-child(2n) {
     float: right;
     margin-right: 0;
     margin-left: 0;
@@ -984,13 +1003,16 @@ div.form-item div.password-suggestions.description ul li {
 }
 
 .node-type-game div.author-photo,
-.node-type-game div.content-information {
+.node-type-game div.content-information,
+.node-type-round div.author-photo,
+.node-type-round div.content-information {
     display: inline-block;
     margin-right: 10px;
     vertical-align: middle;
 }
 
-.node-type-game div.author-photo img {
+.node-type-game div.author-photo img,
+.node-type-round div.author-photo img {
     overflow:hidden;
     -webkit-border-radius:50px;
     -moz-border-radius:50px;
@@ -1014,6 +1036,8 @@ div.created-date span.created-date {
 .node-type-game #zone-content .node-game div.levels {
     display: inline-block;
     width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
     font-size: 1.4rem;
     margin: 20px 100px 20px 0;
     vertical-align: top;
@@ -1037,21 +1061,65 @@ div.created-date span.created-date {
     text-align: center;
 }
 
-.node-type-game #zone-content div.types .label-inline,
-.node-type-game #zone-content div.levels .label-inline {
+.node-type-game div.types .label-inline,
+.node-type-game div.levels .label-inline {
     font-weight: 900;
 }
 
-.node-type-game #zone-content .node-round.node-teaser h2 {
+.node-type-game .add-round .button {
+    margin: 30px auto;
+}
+
+.node-type-game div.title {
+    float: left;
+}
+
+.node-type-game div.title {
+    width: 80%;
+}
+
+.node-type-game h2 {
     font-size: 1.2rem;
     text-transform: uppercase;
     color: #4FAD26;
+    margin: 0;
 }
 
-.node-type-game .add-round p.button {
+.node-type-game div.see-more.round,
+.node-type-game div.round-edit {
+    float: right;
+    margin-left: 10px;
+}
+
+.node-type-game div.round-edit .pencil-icon {
+    background-image: url('../img/edit-pencil.svg');
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: center;
+    height: 40px;
+    width: 40px;
+    transition: all 0.5s;
+    float: right;
+    margin: 0;
+}
+
+.node-type-game div.round-edit p a {
+    color: transparent;
+    background-color: transparent;
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    margin: 0;
     display: block;
-    margin: 30px auto;
-    font-size: 1.5rem;
+}
+
+.node-type-game div.round-description {
+    text-align: justify;
+    margin: 60px 0 20px 0;
+}
+
+.node-type-game p.round-description {
+    margin: 0;
 }
 
 .node-type-game .node-round div.question-types {
@@ -1078,7 +1146,7 @@ div.created-date span.created-date {
 
 .node-type-game .node-round h3 {
     font-size: 0.9rem;
-    width: 80%;
+    width: 85%;
     text-align: justify;
     margin: 10px 0;
 }
@@ -1102,32 +1170,32 @@ div.created-date span.created-date {
 }
 
 .node-type-game .node-round .node-question .see-more {
-    width: 20%;
+    width: 15%;
 }
 
 .node-type-game .node-round > p.button {
     width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
     margin: 0 auto 20px auto;
 }
 
 .node-type-game .node-round p.button.eye-icon {
     background-image: url('../img/eye.svg');
     background-repeat: no-repeat;
-    background-color: #4FAD26;
-    background-size: 30px 30px;
+    background-size: 40px 40px;
     background-position: center;
     height: 40px;
     width: 40px;
-    border-radius: 50px;
     transition: all 0.5s;
-    margin: auto;
+    margin: 0;
 }
 
-.node-type-game .node-round.node-teaser .node-question p.button:hover {
-    background-color: #2a7a07;
+.node-type-game .node-round.node-teaser p.button.eye-icon {
+    margin: auto 0 auto auto;
 }
 
-.node-type-game .node-round.node-teaser .node-question p.button a {
+.node-type-game .node-round p.button.eye-icon a {
     color: transparent;
     background-color: transparent;
     height: 40px;
@@ -1139,7 +1207,8 @@ div.created-date span.created-date {
 
 /* DISPLAY QUESTION COLORBOX */
 
-.node-type-game .node-question > div {
+.node-type-game .node-question > div,
+.node-type-round .node-question > div {
     margin: 15px 0;
 }
 
@@ -1155,7 +1224,9 @@ div.created-date span.created-date {
 }
 
 .node-question div.question-types,
-.node-question div.creation {
+.node-question div.creation,
+.node-round div.question-types,
+.node-round div.creation {
     display: inline-block;
 }
 
@@ -1203,26 +1274,28 @@ div.created-date span.created-date {
     width: 10%;
     margin: 0;
     padding: 0;
+    background-image: url("../img/checkbox.svg")
 }
 
-.node-question ul.choice-list {
+.node-question div.choice-wrapper {
     width: 90%;
     padding: 0;
     margin: 10px 0;
 }
 
 .node-question div.correct-answer,
-.node-question ul.choice-list {
+.node-question div.choice-wrapper {
     display: inline-block;
     vertical-align: middle;
 }
 
 .node-question div.correct-answer p {
     text-align: center;
+    margin: 0;
 }
 
-.node-question .choice-list li {
-    list-style: none;
+.node-question div.choices-list p {
+    margin: 0;
 }
 
 
