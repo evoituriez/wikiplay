@@ -126,6 +126,10 @@ ul.shs-hierarchy li.first {
     margin: 0;
 }
 
+.crumbs-current-page {
+    font-size: 1rem;
+}
+
 /*######################################## FORMS ########################################*/
 
 form label {
@@ -984,18 +988,11 @@ div.form-item div.password-suggestions.description ul li {
 }
 
 .node-type-game #zone-content .node-round {
-    float: left;
-    margin: 10px;
-    width: 43%;
+    margin: 20px 0;
+    width: 94%;
     min-height: 200px;
     background-color: #EFEFEF;
     padding: 1% 3% 1% 3%;
-}
-
-.node-type-game #zone-content .round div.node-round.node-teaser:nth-child(2n) {
-    float: right;
-    margin-right: 0;
-    margin-left: 0;
 }
 
 .node-type-game .creation {
@@ -1092,7 +1089,7 @@ div.created-date span.created-date {
 }
 
 .node-type-game div.round-edit .pencil-icon {
-    background-image: url('../img/edit-pencil.svg');
+    background-image: url('../img/pencil.svg');
     background-repeat: no-repeat;
     background-size: 30px 30px;
     background-position: center;
@@ -1204,6 +1201,25 @@ div.created-date span.created-date {
     margin: 0;
     display: block;
 }
+
+/* DISPLAY QUESTION ACCROCHE ROUND */
+
+.content > .node-round .node-question.node-teaser {
+    float: left;
+    width: 27%;
+    background-color: #EFEFEF;
+    padding: 1% 2%;
+    margin: 1%;
+}
+
+.content > .node-round .node-question.node-teaser:nth-child(3n + 2) {
+    margin: 1% 1% 0 1%;
+}
+
+.content > .node-round .node-question.node-teaser:nth-child(3n + 3) {
+    margin: 1% 0;
+}
+
 
 /* DISPLAY QUESTION COLORBOX */
 
