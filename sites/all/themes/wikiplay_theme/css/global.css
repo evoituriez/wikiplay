@@ -92,7 +92,6 @@ p.button a {
     text-transform: uppercase;
     border: none;
     padding: 10px 20px;
-    border-radius: 50px;
     transition: all 0.5s;
     margin: 0 0 20px 0;
 }
@@ -162,26 +161,26 @@ input[type='password']:focus {
 	border-radius: 0;
 }
 
-input[type='text'],
-input[type='password'] {
+input[type="text"],
+input[type="password"] {
 	width: 120px;
 	height: 25px;
 }
 
-input[type='submit'] {
+input[type="submit"] {
     background: #4FAD26;
     color: #fff;
     text-align: center;
     text-shadow: none;
     text-transform: uppercase;
     border: none;
+    border-radius: 0;
     padding: 10px 20px;
-    border-radius: 50px;
     transition: all 0.5s;
     margin: 0 0 10px 0;
 }
 
-input[type='submit']:hover {
+input[type="submit"]:hover {
     background: #2a7a07;
 }
 
@@ -500,8 +499,6 @@ input[type='submit']:hover {
 #zone-hp-first #block-views-how-it-works-hp-block .owl-item .vocabulary-jeu-tele-associe img {
     width: 220px;
     height: 220px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
 }
 
 #zone-hp-first #block-views-how-it-works-hp-block .owl-item .vocabulary-jeu-tele-associe div.title {
@@ -518,8 +515,6 @@ input[type='submit']:hover {
     -webkit-align-items: center;
     align-items: center;
     justify-content: center;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
     border-top: 2px solid #4FAD26
 }
 
@@ -711,7 +706,7 @@ h1#page-title {
     text-transform: uppercase;
     border: none;
     padding: 10px 20px;
-    border-radius: 50px;
+    border-radius: 0;
     position: absolute;
     margin: 150px 0 0 0;
 }
@@ -886,8 +881,8 @@ div.form-item div.password-suggestions.description ul li {
     margin: 1%;
     width: 28%;
     height: 300px;
-    background-color: #EFEFEF;
     float: left;
+    box-shadow: 24px 24px #4FAD26;
 }
 
 .page-jeux div.views-row:nth-child(3n+1) .node-game.node-teaser {
@@ -988,11 +983,21 @@ div.form-item div.password-suggestions.description ul li {
 }
 
 .node-type-game #zone-content .node-round {
-    margin: 20px 0;
-    width: 94%;
-    min-height: 200px;
-    background-color: #EFEFEF;
-    padding: 1% 3% 1% 3%;
+    padding: 2%;
+    margin: 1%;
+    width: 28%;
+    height: auto;
+    float: left;
+    box-shadow: 24px 24px #4FAD26;
+}
+
+div.node-round.node-teaser:nth-child(3n+1) {
+    margin-left: 0;
+}
+
+div.node-round.node-teaser:nth-child(3n) {
+    float: right;
+    margin-right: 0;
 }
 
 .node-type-game .creation {
@@ -1222,6 +1227,10 @@ div.created-date span.created-date {
 
 
 /* DISPLAY QUESTION COLORBOX */
+
+#cboxWrapper {
+    border-radius: 25px;
+}
 
 .node-type-game .node-question > div,
 .node-type-round .node-question > div {
