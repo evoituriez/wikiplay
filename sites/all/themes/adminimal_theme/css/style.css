@@ -3068,3 +3068,10 @@ body.adminimal-skin-alternative.adminimal-theme.page-admin-structure-features #e
 body.page-admin-structure-views-view #content-wrapper #main-content {
   display: initial;
 }
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! PERSONALIZATION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+.field-type-image img {
+    max-width: 100%;
+    height: auto;
+}
