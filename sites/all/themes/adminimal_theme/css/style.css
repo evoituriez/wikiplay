@@ -3157,3 +3157,10 @@ div.diff-section-title {
     height: auto;
 }
 
+a.tabledrag-handle .handle {
+  background: url(../../adminimal_theme/css/images/draggable.png) no-repeat 0px 0px;
+  margin: 0.2em 0.5em; /* LTR */
+}
+a.tabledrag-handle-hover .handle {
+  background-position: 0px 0px;
+}
