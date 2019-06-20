@@ -8,7 +8,7 @@ colors:
 Blue base : #0f3750
 Blue hover : #0f64ad
 Grey : #EFEFEF
-Red : #D24848
+Red : #b33b26
 Orange : #EF8C04
 
 */
@@ -988,7 +988,7 @@ div.form-item div.password-suggestions.description ul li {
 .node-type-game #zone-content .node-round {
     padding: 2%;
     margin: 1%;
-    width: 28%;
+    width: 27%;
     height: auto;
     float: left;
     box-shadow: 24px 24px #0f3750;
