@@ -56,7 +56,7 @@ h6 {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     letter-spacing: 0.2rem;
 }
 
@@ -129,6 +129,14 @@ p.button a:visited {
     margin: 10px 0;
 }
 
+ul {
+    margin-left: 20px;
+}
+
+ul, li {
+    font-size: 1rem;
+}
+
 ul.shs-hierarchy {
     padding-left: 0;
 }
@@ -160,7 +168,7 @@ ul.shs-hierarchy li.first {
     border: none;
     width: fit-content;
     height: 68px;
-    margin: 12px 0;
+    margin: 10px 0;
 }
 
 .logged-in .tabs.primary.clearfix li {
@@ -233,7 +241,86 @@ ul.shs-hierarchy li.first {
     border: 2px solid #0f3750;
 }
 
+.label-inline {
+    color: #0f3750;
+    font-weight: 900;
+}
+
+.item-list ul.pager {
+    background-color: #fff;
+    border: none;
+    padding-top: 10px;
+    width: fit-content;
+    margin: auto;
+}
+
+.item-list .pager li {
+    margin: 5px;
+    font-size: 1rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.item-list .pager li.pager-item {
+    border: none;
+}
+
+.item-list .pager li.pager-item a {
+    background: #EFEFEF;
+}
+
+.item-list .pager li.pager-item:hover a,
+.item-list .pager li.pager-previous:hover a,
+.item-list .pager li.pager-first:hover a,
+.item-list .pager li.pager-next:hover a,
+.item-list .pager li.pager-last:hover a {
+    background: #0f3750;
+    color: #fff;
+    transition: all 0.5s;
+}
+
+.item-list .pager li.pager-current {
+    background: #0f3750;
+    border: none;
+    border-radius: 0;
+}
+
+.item-list .pager li.pager-previous,
+.item-list .pager li.pager-first,
+.item-list .pager li.pager-next,
+.item-list .pager li.pager-last {
+    width: 100px;
+    border: none;
+}
+
+.item-list .pager li.pager-previous a,
+.item-list .pager li.pager-first a,
+.item-list .pager li.pager-next a,
+.item-list .pager li.pager-last a {
+    width: 100px;
+    background: #EFEFEF;
+    border-radius: 0;
+}
+
+.item-list .pager li.pager-next,
+.item-list .pager li.pager-last {
+    float: left;
+    position: relative;
+    right: 0;
+}
+
 /*######################################## FORMS ########################################*/
+
+textarea, select, input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"], input[type="month"],
+input[type="number"], input[type="password"],
+input[type="search"], input[type="tel"], 
+input[type="text"], input[type="time"],
+input[type="url"], input[type="week"] {
+    font-size: 1rem !important;
+}
 
 form label {
     display: inline-block;
@@ -282,11 +369,17 @@ input[type="submit"] {
     border-radius: 0;
     padding: 10px 20px;
     transition: all 0.5s;
-    margin: 0 0 10px 0;
+    margin: 0 10px 10px 10px;
 }
 
 input[type="submit"]:hover {
     background: #0f64ad;
+    box-shadow: none;
+}
+
+input[type="submit"]:active,
+input[type="submit"]:visited {
+    box-shadow: none;
 }
 
 .form-managed-file .form-submit {
@@ -330,6 +423,20 @@ input[type="submit"]:hover {
     margin: 10px 0;
 }
 
+.omega-mediaqueries-processed .form-textarea-wrapper textarea {
+    border: 1px solid #0f3750;
+}
+
+.omega-mediaqueries-processed .form-textarea-wrapper textarea:active,
+.omega-mediaqueries-processed .form-textarea-wrapper textarea:focus {
+    box-shadow: none;
+}
+
+.omega-mediaqueries-processed .resizable-textarea .grippie {
+    border: 2px solid #0f3750;
+    background: #0f3750 url(../img/bottom-textarea.png) no-repeat center 1px;;
+}
+
 .omega-mediaqueries-processed #cke_1_contents {
     padding: 10px;
     width: auto;
@@ -344,7 +451,6 @@ input[type="submit"]:hover {
     border: solid 1px #696969;
     background-color: black;
 }
-
 
 .omega-mediaqueries-processed .cke_path,
 .omega-mediaqueries-processed .filter-wrapper.form-wrapper,
@@ -442,6 +548,166 @@ input[type="checkbox"]:checked {
 
 .omega-mediaqueries-processed img.file-icon {
     display: none;
+}
+
+.views-exposed-form label {
+    margin: 10px 0;
+}
+
+.view-filters {
+    background-color: #EFEFEF;
+    margin: 30px 0;
+    padding : 10px 20px;
+}
+
+.omega-mediaqueries-processed .field-multiple-table tbody tr th:nth-child(2) {
+    display: none;
+}
+
+.omega-mediaqueries-processed .field-multiple-table td:hover,
+.omega-mediaqueries-processed .field-multiple-table tr:hover td {
+    background-color: #fff;
+}
+
+.omega-mediaqueries-processed .remove-button {
+    background-color: #b33b26;
+}
+
+.omega-mediaqueries-processed a.tabledrag-handle {
+    height: 50px;
+}
+
+ .omega-mediaqueries-processed  tr.drag a.tabledrag-handle .handle {
+    background: url(../img/grab.svg) no-repeat 4px 12px;
+    background-size: 20px 20px;
+}
+
+.omega-mediaqueries-processed a.tabledrag-handle .handle {
+    background: url(../img/drag-previous.svg) no-repeat 4px 9px;
+    background-size: 25px 25px;
+    height: 50px;
+}
+
+.omega-mediaqueries-processed .field-multiple-table .field-label label {
+    text-transform: uppercase;
+}
+
+.omega-mediaqueries-processed .form-actions {
+    width: fit-content;
+    margin: auto;
+}
+
+.omega-mediaqueries-processed .form-actions #edit-submit {
+    background-color: #0f64ad;
+    font-size: 1.5em;
+}
+
+
+/*######################################## SEARCH PAGE ########################################*/
+
+.page-search-content .node-game .type,
+.page-search-content .node-game .level,
+.page-search-content .node-game .warning-game {
+    display: inline-block;
+    width: fit-content;
+    margin-right: 30px;
+}
+
+.page-search-content .node-game .type .label-inline,
+.page-search-content .node-game .level .label-inline,
+.page-search-content .node-game .warning-game .label-inline,
+.page-search-content .node-game .type p,
+.page-search-content .node-game .level p,
+.page-search-content .node-game .warning-game p {
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.page-search-content .form-item-keys {
+    width: 100%;
+}
+
+.page-search-content .form-item-keys label {
+    width: 400px;
+}
+
+.page-search-content .form-item-keys input {
+    width: 30%;
+    margin: 10px 20px;
+    font-size: 1rem;
+}
+
+.page-search-content .ds-search-extra {
+    width: fit-content;
+    margin: 20px auto;
+}
+
+.page-search-content .view-mode-search_result {
+    margin: 0;
+    padding: 30px 0;
+    border-bottom: 1px solid #0f3750;
+}
+
+.page-search-content .image-search,
+.page-search-content .content-search,
+.page-search-content .more-search {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.page-search-content .image-search {
+    width: 10%;
+    height: auto;
+    margin-right: 20px;
+    border: 5px solid #0f3750;
+}
+
+.page-search-content .image-search + .content-search {
+    width: 70%;
+}
+
+.page-search-content .image-search + .content-search + .more-search {
+    width: 15%;
+}
+
+.page-search-content .content-search {
+    width: 80%;
+}
+
+.page-search-content .more-search {
+    width: 20%;
+}
+
+.page-search-content .more-search p.button {
+    margin: auto;
+}
+
+.number-questions .label-inline,
+.number-questions .number {
+    display: inline-block;
+}
+
+.number-questions .number {
+    margin-left: 10px;
+}
+
+.page-search-content .node-question .type,
+.page-search-content .node-question .level,
+.page-search-content .node-question .tv-show {
+    display: inline-block;
+    width: fit-content;
+    margin-right: 30px;
+}
+
+.page-search-content .node-question .type .label-inline,
+.page-search-content .node-question .level .label-inline,
+.page-search-content .node-question .tv-show .label-inline,
+.page-search-content .node-question .type p,
+.page-search-content .node-question .level p,
+.page-search-content .node-question .tv-show .item-list {
+    display: inline-block;
+    font-size: 1rem;
+    vertical-align: middle;
 }
 
 /*######################################## COLORBOX ########################################*/
@@ -667,9 +933,9 @@ input[type="checkbox"]:checked {
 #zone-highlight #region-highlight #block-views-highlight-slider-hp-block .titles-block form input[type='text'] {
     background: none;
     margin-right: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     width: 30%;
-    height: 30px;
+    height: 50px;
     border-bottom: 2px solid #000;
     color: #0f64ad;
     font-size: 1.5rem;
@@ -884,7 +1150,7 @@ input[type="checkbox"]:checked {
 
 h1#page-title {
     background-color: #0f3750;
-    padding: 10px 50px;
+    padding: 20px 50px;
     width: fit-content;
     width: -moz-fit-content;
     width: -webkit-fit-content;
@@ -1010,7 +1276,7 @@ h1#page-title {
     width: 280px;
     margin-top: 5px;
     color: #000;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 [class*="page-user"] form#user-login .form-item label,
@@ -1119,28 +1385,22 @@ div.form-item div.password-suggestions.description ul li {
 /* DISPLAY GAME TEASER */
 
 .page-jeux .node-game.node-teaser {
-    padding: 2%;
-    margin: 2%;
-    width: 26%;
+    width: 28%;
     height: 300px;
     float: left;
     background-color: #fff;
     box-shadow: 15px 15px #0f3750;
     transition: all 1s;
+    padding: 1% 2%;
+    margin: 1% 0;
 }
 
 .page-jeux .node-game.node-teaser:hover {
     box-shadow: 10px 10px #0f64ad;
 }
 
-.page-jeux div.views-row:nth-child(3n+1) .node-game.node-teaser {
-    margin-left: 0;
-}
-
-.page-jeux div.views-row:nth-child(3n) .node-game.node-teaser {
-    float: right;
-    margin-right: 0;
-}
+.page-jeux div.views-row:nth-child(3n+2) .node-game.node-teaser {
+    margin: 1% 2%;  }
 
 .page-jeux .node-game h2 {
     font-size: 1.1rem;
@@ -1317,6 +1577,8 @@ div.created-date span.created-date {
     border-top: 1px solid #0f3750;
     padding: 30px 0;
     margin: 0;
+    font-size: 1rem;
+    text-align: center;
 }
 
 .node-type-game #zone-content .node-game div.description p,
@@ -1331,8 +1593,18 @@ div.created-date span.created-date {
     font-weight: 900;
 }
 
-.node-type-game .add-round .button {
-    margin: 30px auto;
+.node-type-game .creation,
+.node-type-game .node-game .add-round  {
+    display: inline-block;
+    vertical-align: middle;
+    width: 50%;
+    margin: 30px 0;
+}
+
+.node-type-game .node-game .add-round p {
+    float: right;
+    margin: 0 0.5em;
+    padding: 0;
 }
 
 .node-type-game div.title {
@@ -1504,21 +1776,17 @@ div.created-date span.created-date {
 
 /* DISPLAY QUESTION ACCROCHE ROUND */
 
-.content > .node-round .node-question.node-teaser {
+.node-type-round .content .node-round.view-mode-full .node.node-question.node-teaser {
     float: left;
     height: 190px;
-    width: 27%;
+    width: 28%;
     background-color: #EFEFEF;
     padding: 1% 2%;
-    margin: 1%;
-}
-
-.content > .node-round .node-question.node-teaser:nth-child(3n + 2) {
-    margin: 1% 1% 0 1%;
-}
-
-.content > .node-round .node-question.node-teaser:nth-child(3n + 3) {
     margin: 1% 0;
+}
+
+.node-type-round .content .node-round.view-mode-full .node.node-question.node-teaser:nth-child(3n + 2) {
+    margin: 1% 2%;    
 }
 
 .node-question.node-teaser h3 {
@@ -1558,7 +1826,22 @@ div.created-date span.created-date {
     display: inline-block;
 }
 
+.node-question div.creation {
+    width: 60%;
+}
+
 .node-question div.question-types {
+    float: right;
+    margin: 0;
+    width: 30%;
+}
+
+.node-question .question-types p {
+    background: #0f64ad;
+    padding: 15px 20px;
+    height: 20px;
+    color: #fff;
+    width: fit-content;
     float: right;
 }
 
@@ -1626,10 +1909,27 @@ div.created-date span.created-date {
     margin: 0;
 }
 
+ol.answer-list .label-above {
+    margin-left: -1.2em;
+}
+
 /*---------------------------------------- ROUND PAGE ----------------------------------------*/
 
 .node-type-round .creation {
     margin: 30px 0;
+}
+
+.node-type-round .creation,
+.node-type-round .node-round .question-list-button {
+    display: inline-block;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.node-type-round .node-round .question-list-button p {
+    float: right;
+    margin: 0 0.5em;
+    padding: 0;
 }
 
 /*---------------------------------------- QUESTIONS PAGE ----------------------------------------*/
@@ -1669,6 +1969,161 @@ div.created-date span.created-date {
 .view-questions-selection .node-question .label-inline + p {
     display: inline-block;
     width: fit-content;
+}
+
+#edit-populate-wrapper {
+    width: 100%;
+}
+
+#edit-populate-wrapper label,
+#edit-populate-wrapper .form-item-populate {
+    float: left;
+    margin: 10px 30px 10px 0;
+}
+
+#edit-field-jeu-televise-tid-wrapper {
+   width: 300px;
+}
+
+.form-type-textfield input#edit-populate {
+    width: 300px;
+    font-size: 1rem;
+    background: none;
+}
+
+.views-exposed-form .views-exposed-widget .form-submit {
+    margin: 40px 0 0 20px;
+}
+
+.views-exposed-widgets {
+    margin: 10px 0 50px 0;
+}
+
+.total-results {
+    font-size: 1.3rem;
+    position: relative;
+    top: 315px;
+    left: 20px;
+}
+
+.view-questions-selection .view-content {
+    margin-top: 60px;
+}
+
+.flag-success-message {
+    margin-top: 10px;
+}
+
+.flag-question .unflag-action {
+    background: #b33b26;
+}
+
+.flag-question .unflag-action:hover {
+    background: #0f3750;
+}
+
+.view-questions-selection .page-description {
+
+}
+
+.button-questions-list {
+    width: fit-content;
+    margin: -30px auto 0 auto;
+}
+
+.button-questions-list p {
+    display: inline-block;
+    margin: 10px 30px;
+}
+
+.button-questions-list p.valid a {
+    background: #0062A0;
+}
+
+/*---------------------------------------- ADD QUESTION PAGE ----------------------------------------*/
+
+
+.field-name-field-type-de-question,
+.field-name-field-complexite,
+.field-name-field-jeu-televise {
+    display: inline-block;
+    width: fit-content;
+    margin-right: 50px;
+}
+
+.field-name-field-type-de-question label,
+.field-name-field-complexite label,
+.field-name-field-jeu-televise label {
+    width: 200px;
+}
+
+.node-question-form label,
+.node-question-form select {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.field-name-field-theme label,
+.field-name-field-question label,
+.field-name-field-answer label {
+    width: 100%;
+}
+
+.field-name-field-theme,
+.field-name-field-question,
+.field-name-field-answer {
+    margin: 30px 0;
+}
+
+.node-question-form .form-text {
+    width: 80%;
+    font-size: 1.2rem;
+}
+
+.page-node-add-question .field-name-field-correct-answer,
+.page-node-add-question .field-name-field-choice-label {
+    display: inline-block;
+}
+
+.page-node-add-question .field-name-field-choice-label {
+    width: 80%;
+}
+
+.page-node-add-question .field-name-field-choice-label input.form-text {
+    margin-left: 20px;
+    width: 100% !important;
+}
+
+.omega-mediaqueries-processed .field-name-field-choice-label .form-type-textfield {
+    margin: 20px 0;
+}
+
+.page-node-add-question  .field-type-text-long {
+    margin: 0 0 20px 0;
+}
+
+.page-node-add-question .field-name-field-answer {
+    margin: 0;
+}
+
+.page-node-add-question .form-item .field-name-field-answer input.form-text {
+    width: 100%;
+    margin-left: 20px;
+}
+
+.page-node-add-question .form-item .field-name-field-answer label {
+    width: fit-content;
+}
+
+.field-multiple-table .form-type-textfield {
+    margin: 10px 0 !important;
+}
+
+/*---------------------------------------- PAGE EDITORIALE ----------------------------------------*/
+
+
+.node-page-editoriale p.button {
+    margin: 20px auto;
 }
 
 /*---------------------------------------- FOOTER ----------------------------------------*/
