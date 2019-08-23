@@ -1,0 +1,16 @@
+name = Views filters populate
+description = "Allows one filter to populate other filters value."
+dependencies[] = views
+package = Views
+core = 7.x
+
+files[] = views_filter_populate.module
+
+; Views handlers
+files[] = views/views_filters_populate_handler_filter.inc
+
+; Information added by Drupal.org packaging script on 2019-02-20
+version = "7.x-1.3"
+core = "7.x"
+project = "views_filters_populate"
+datestamp = "1550634192"
